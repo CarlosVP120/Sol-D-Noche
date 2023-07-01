@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 
 const Home = () => {
   return (
-    <div className="relative">
+    <div className="relative h-screen">
       <div className="absolute w-screen z-10">
         <Navbar />
       </div>
