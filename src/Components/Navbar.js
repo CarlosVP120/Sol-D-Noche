@@ -21,8 +21,12 @@ const Navbar = () => {
         </li>
         <li>
           <a
-            href="#"
-            className="p-2 hover:text-stone-100 transition-all duration-300"
+            onClick={() => {
+              document
+                .getElementById("about")
+                .scrollIntoView({ behavior: "smooth" });
+            }}
+            className="p-2 hover:text-stone-100 transition-all duration-300 cursor-pointer"
           >
             About
           </a>
