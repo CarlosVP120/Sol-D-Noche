@@ -1,8 +1,13 @@
 import React from "react";
+import Navbar from "../Components/Navbar";
 
 const Home = () => {
   return (
     <div className="relative">
+      <div className="absolute w-screen z-10">
+        <Navbar />
+      </div>
+
       <video
         className="absolute w-screen h-screen -z-10 object-cover"
         autoPlay
