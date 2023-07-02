@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -39,28 +39,40 @@ const Gallery = () => {
     },
   ];
 
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    const interval = setInterval(() => {
+      slider.slickNext();
+    }, 6000); // slide duration
+
+    return () => clearInterval(interval);
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
+    autoplay: false,
+
     nextArrow: (
       <div>
-        <div className="text-black">
+        <div className="flex text-black">
           {" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
             stroke="currentColor"
             className="w-6 h-6 hover:text-yellow-500 transition-all duration-300"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+              d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
             />
           </svg>
         </div>
@@ -68,20 +80,19 @@ const Gallery = () => {
     ),
     prevArrow: (
       <div>
-        <div className="text-black left-0">
+        <div className="flex text-black">
           {" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
             stroke="currentColor"
             className="w-6 h-6 hover:text-yellow-500 transition-all duration-300"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+              d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
             />
           </svg>
         </div>
@@ -117,7 +128,7 @@ const Gallery = () => {
 
   return (
     <div className="w-fullpy-8" id="gallery">
-      <Slider {...settings} className="w-11/12 mx-auto my-8">
+      <Slider ref={sliderRef} {...settings} className="w-11/12 mx-auto my-8">
         {images.map((image, index) => (
           <div key={index} className="relative overflow-hidden rounded-lg">
             <img
