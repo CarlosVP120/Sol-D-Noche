@@ -18,23 +18,23 @@ const Gallery = () => {
       alt: "Gallery",
     },
     {
-      src: "/images/image1.png",
+      src: "/images/image4.png",
       alt: "Gallery",
     },
     {
-      src: "/images/image1.png",
+      src: "/images/image5.png",
       alt: "Gallery",
     },
     {
-      src: "/images/image1.png",
+      src: "/images/image6.png",
       alt: "Gallery",
     },
     {
-      src: "/images/image1.png",
+      src: "/images/image7.png",
       alt: "Gallery",
     },
     {
-      src: "/images/image1.png",
+      src: "/images/image8.png",
       alt: "Gallery",
     },
   ];
@@ -77,12 +77,20 @@ const Gallery = () => {
     <div className="w-fullpy-8" id="gallery">
       <Slider {...settings} className="w-11/12 mx-auto my-8">
         {images.map((image, index) => (
-          <div key={index} className="p-0.5">
+          <div key={index} className="relative overflow-hidden rounded-lg">
             <img
               src={image.src}
               alt={image.alt}
-              className="mx-auto w-full h-auto rounded-md"
+              className="object-cover w-full transition duration-300 ease-in-out transform hover:scale-105"
             />
+
+            <div className="absolute inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity">
+              <div className="flex items-center justify-center h-full">
+                <button className="px-4 py-2 text-white bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
+                  See details
+                </button>
+              </div>
+            </div>
           </div>
         ))}
       </Slider>
