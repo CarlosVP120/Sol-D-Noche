@@ -45,6 +45,48 @@ const Gallery = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
+    nextArrow: (
+      <div>
+        <div className="text-black">
+          {" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6 hover:text-yellow-500 transition-all duration-300"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+            />
+          </svg>
+        </div>
+      </div>
+    ),
+    prevArrow: (
+      <div>
+        <div className="text-black left-0">
+          {" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6 hover:text-yellow-500 transition-all duration-300"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+            />
+          </svg>
+        </div>
+      </div>
+    ),
     responsive: [
       {
         breakpoint: 1024,
@@ -87,7 +129,7 @@ const Gallery = () => {
             <div className="absolute inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity">
               <div className="flex items-center justify-center h-full">
                 <button className="px-4 py-2 text-white bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
-                  See details
+                  See More
                 </button>
               </div>
             </div>
