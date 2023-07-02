@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-between px-20 py-2 mt-8 min-w-screen">
+    <div className="flex items-center justify-between px-4 sm:px-8 md:px-16 py-2 mt-8">
       {/* Logo */}
       <div className="flex items-center gap-4">
         <div className="w-6 h-6 bg-yellow-500 rounded-full"></div>
@@ -10,7 +10,7 @@ const Navbar = () => {
       </div>
 
       {/* Links in the center */}
-      <ul className="flex gap-4 text-xl text-stone-400 font-bold absolute text-center left-1/2 transform -translate-x-1/2">
+      <ul className="hidden sm:flex gap-4 text-xl text-stone-400 font-bold">
         <li>
           <button
             onClick={() => {

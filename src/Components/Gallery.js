@@ -57,7 +57,6 @@ const Gallery = () => {
     slidesToShow: 4,
     slidesToScroll: 4,
     autoplay: false,
-
     nextArrow: (
       <div>
         <div className="flex text-black">
@@ -127,26 +126,28 @@ const Gallery = () => {
   };
 
   return (
-    <div className="w-fullpy-8" id="gallery">
-      <Slider ref={sliderRef} {...settings} className="w-11/12 mx-auto my-8">
-        {images.map((image, index) => (
-          <div key={index} className="relative overflow-hidden rounded-lg">
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="object-cover w-full transition duration-300 ease-in-out transform hover:scale-105"
-            />
+    <div className="w-full py-8" id="gallery">
+      <div className="w-9/12 sm:w-11/12 mx-auto my-8">
+        <Slider ref={sliderRef} {...settings}>
+          {images.map((image, index) => (
+            <div key={index} className="relative overflow-hidden rounded-lg">
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="object-cover w-full transition duration-300 ease-in-out transform hover:scale-105"
+              />
 
-            <div className="absolute inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity">
-              <div className="flex items-center justify-center h-full">
-                <button className="px-4 py-2 text-white bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
-                  See More
-                </button>
+              <div className="absolute inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity">
+                <div className="flex items-center justify-center h-full">
+                  <button className="px-4 py-2 text-white bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
+                    See More
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };
