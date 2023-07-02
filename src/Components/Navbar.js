@@ -12,15 +12,19 @@ const Navbar = () => {
       {/* Links in the center */}
       <ul className="flex gap-4 text-xl text-stone-400 font-bold absolute text-center left-1/2 transform -translate-x-1/2">
         <li>
-          <a
-            href="#"
-            className="p-2 hover:text-stone-100 transition-all duration-300"
+          <button
+            onClick={() => {
+              document
+                .getElementById("home")
+                .scrollIntoView({ behavior: "smooth" });
+            }}
+            className="p-2 hover:text-stone-100 transition-all duration-300 cursor-pointer"
           >
             Home
-          </a>
+          </button>
         </li>
         <li>
-          <a
+          <button
             onClick={() => {
               document
                 .getElementById("about")
@@ -29,29 +33,37 @@ const Navbar = () => {
             className="p-2 hover:text-stone-100 transition-all duration-300 cursor-pointer"
           >
             About
-          </a>
+          </button>
         </li>
         <li>
-          <a
-            href="#"
-            className="p-2 hover:text-stone-100 transition-all duration-300"
+          <button
+            onClick={() => {
+              document
+                .getElementById("products")
+                .scrollIntoView({ behavior: "smooth" });
+            }}
+            className="p-2 hover:text-stone-100 transition-all duration-300 cursor-pointer"
           >
-            Services
-          </a>
+            Products
+          </button>
         </li>
         <li>
-          <a
-            href="#"
-            className="p-2 hover:text-stone-100 transition-all duration-300"
+          <button
+            onClick={() => {
+              document
+                .getElementById("contact")
+                .scrollIntoView({ behavior: "smooth" });
+            }}
+            className="p-2 hover:text-stone-100 transition-all duration-300 cursor-pointer"
           >
             Contact
-          </a>
+          </button>
         </li>
       </ul>
 
       {/* Contact Button */}
-      <a
-        href="#_"
+      <button
+        href="#"
         class="relative bg-transparent bg-opacity-40 inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-yellow-500 rounded-full shadow-md group"
       >
         <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-yellow-500 group-hover:translate-x-0 ease">
@@ -74,7 +86,7 @@ const Navbar = () => {
           Productos
         </span>
         <span class="relative invisible">Productos</span>
-      </a>
+      </button>
     </div>
   );
 };

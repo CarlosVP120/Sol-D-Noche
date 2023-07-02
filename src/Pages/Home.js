@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 
 const Home = () => {
   return (
-    <div className="h-screen relative overflow-hidden">
+    <div className="h-screen relative overflow-hidden" id="home">
       <div className="absolute w-screen z-10">
         <Navbar />
       </div>
