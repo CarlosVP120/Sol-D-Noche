@@ -126,7 +126,7 @@ const Gallery = () => {
   };
 
   return (
-    <div className="w-full py-8" id="gallery">
+    <div className="w-full pt-8" id="gallery">
       <div className="w-9/12 sm:w-11/12 mx-auto my-8">
         <Slider ref={sliderRef} {...settings}>
           {images.map((image, index) => (
