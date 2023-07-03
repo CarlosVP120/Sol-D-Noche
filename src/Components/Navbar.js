@@ -35,17 +35,13 @@ const Navbar = () => {
             About
           </button>
         </li>
-        <li>
-          <button
-            onClick={() => {
-              document
-                .getElementById("products")
-                .scrollIntoView({ behavior: "smooth" });
-            }}
+        <li className="flex items-center justify-center">
+          <a
+            href="/products"
             className="p-2 hover:text-stone-100 transition-all duration-300 cursor-pointer"
           >
             Products
-          </button>
+          </a>
         </li>
         <li>
           <button
