@@ -27,46 +27,18 @@ const DummyData = [
     availability: "Available",
   },
   {
-    name: "Pink bag",
+    name: "Yellow bag",
     price: 100,
     image: "../images/image4.png",
     type: "beaded-bags",
     availability: "Sold",
   },
   {
-    name: "Orange bag",
+    name: "Yellow bag",
     price: 100,
     image: "../images/image8.png",
     type: "beaded-bags",
     availability: "Sold",
-  },
-  {
-    name: "Sea necklaces",
-    price: 100,
-    image: "../images/image10.png",
-    type: "necklaces",
-    availability: "Available",
-  },
-  {
-    name: "Silver bag",
-    price: 100,
-    image: "../images/image13.png",
-    type: "beaded-bags",
-    availability: "Available",
-  },
-  {
-    name: "Color necklaces",
-    price: 100,
-    image: "../images/image11.png",
-    type: "necklaces",
-    availability: "Sold",
-  },
-  {
-    name: "Blue necklaces",
-    price: 100,
-    image: "../images/image12.png",
-    type: "necklaces",
-    availability: "Available",
   },
 ];
 
