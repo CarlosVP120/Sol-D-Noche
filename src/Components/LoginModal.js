@@ -30,8 +30,6 @@ export default function Example({ open, setOpen }) {
       setEmail("");
       setPassword("");
       setOpen(false);
-
-      console.log(auth.currentUser);
     } catch (error) {
       console.log("error: ", error);
     }

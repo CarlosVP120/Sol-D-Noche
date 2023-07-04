@@ -38,10 +38,10 @@ const Navbar = ({ type, setOpen, currentUser }) => {
       }`}
     >
       {/* Logo */}
-      <div className="flex items-center gap-4">
+      <a className="flex items-center gap-4" href="/">
         <div className="w-6 h-6 bg-yellow-500 rounded-full"></div>
         <div className="text-2xl font-bold text-stone-500">Sol D Noche</div>
-      </div>
+      </a>
 
       {/* Links in the center */}
       <ul className="hidden sm:flex gap-4 text-xl text-stone-600 font-bold">
