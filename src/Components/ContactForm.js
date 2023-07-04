@@ -50,11 +50,13 @@ function ContactForm() {
     };
   }, []);
 
+  console.log("hi");
+
   return (
     <div className="" id="contact">
-      <h1 className="text-3xl font-bold text-slate-600 flex justify-center">
+      {/* <h1 className="text-2xl font-bold text-slate-600 flex justify-center">
         Send me a message
-      </h1>
+      </h1> */}
       {/* <div className="flex w-1/2 sm:w-full sm:flex justify-center mt-8 gap-12 mx-auto">
         <div>
           <a
@@ -81,13 +83,11 @@ function ContactForm() {
         </div>
       </div> */}
 
-      <div className="max-w-md mx-auto mt-4">
-        {/* <h2 className="text-2xl font-bold text-gray-800 flex justify-center mt-8">
-          Send me a message
-        </h2> */}
-        <p className="text-gray-600 text-center mt-2">
-          I'll get back to you as soon as possible.
-        </p>
+      <div className="max-w-md mx-auto mt-0">
+        <h2 className="text-2xl font-bold text-gray-600 flex justify-center mt-8">
+          Send me a message!
+        </h2>
+        {/* <p className="text-gray-600 text-center mt-2">I'll get back to you as soon as possible.</p> */}
 
         <form ref={form} onSubmit={sendEmail} className="mt-4">
           <div className="mb-4 rounded-md sm:px-4 px-8">
@@ -99,7 +99,7 @@ function ContactForm() {
               id="name"
               name="user_name"
               placeholder="Enter your name..."
-              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:border-orange-500 "
               required
             />
           </div>
@@ -113,7 +113,7 @@ function ContactForm() {
               id="email"
               name="user_email"
               placeholder="Your email address..."
-              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:border-orange-500 "
               required
             />
           </div>
@@ -127,7 +127,7 @@ function ContactForm() {
               name="message"
               placeholder="Write your message here..."
               rows="5"
-              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:border-indigo-500"
+              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:border-orange-500 "
               required
             ></textarea>
           </div>
@@ -135,7 +135,7 @@ function ContactForm() {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="px-6 py-2 text-lg font-medium text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600"
+              className="px-6 py-2 text-lg font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 focus:outline-none focus:bg-orange-600"
             >
               Send Message
             </button>
@@ -199,7 +199,7 @@ function ContactForm() {
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button
                   type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-500 text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm"
+                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-orange-500  text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500  sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={closeModal}
                 >
                   Close
@@ -266,7 +266,7 @@ function ContactForm() {
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button
                   type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-500 text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm"
+                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-orange-500  text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500  sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={closeModal}
                 >
                   Close
