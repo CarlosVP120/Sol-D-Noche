@@ -139,9 +139,12 @@ const Gallery = () => {
 
               <div className="absolute inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity">
                 <div className="flex items-center justify-center h-full">
-                  <button className="px-4 py-2 text-white bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
+                  <a
+                    className="px-4 py-2 text-white bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
+                    href="/products"
+                  >
                     See More
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
