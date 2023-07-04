@@ -50,8 +50,6 @@ function ContactForm() {
     };
   }, []);
 
-  console.log("hi");
-
   return (
     <div className="" id="contact">
       {/* <h1 className="text-2xl font-bold text-slate-600 flex justify-center">
