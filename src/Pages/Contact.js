@@ -15,15 +15,21 @@ const Contact = () => {
           <div className="md:w-1/3 mt-6 md:mt-0 sm:ml-12">
             <div className="grid grid-cols-1 gap-6">
               <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-                <h2 className="text-xl font-semibold mb-2">Phone</h2>
+                <h2 className="text-xl font-semibold mb-2 text-slate-600">
+                  Phone
+                </h2>
                 <p>+1 (555) 123-4567</p>
               </div>
               <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-                <h2 className="text-xl font-semibold mb-2">Email</h2>
+                <h2 className="text-xl font-semibold mb-2 text-slate-600">
+                  Email
+                </h2>
                 <p>soldnoche2@gmail.com</p>
               </div>
               <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-                <h2 className="text-xl font-semibold mb-2">Social Media</h2>
+                <h2 className="text-xl font-semibold mb-2 text-slate-600">
+                  Social Media
+                </h2>
                 <div className="flex space-x-6">
                   <a
                     href="https://www.instagram.com/soldnocheaccents/"
