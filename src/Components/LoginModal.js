@@ -37,6 +37,19 @@ export default function Example({ open, setOpen }) {
     }
   };
 
+  const signInWithGoogle = async () => {
+    try {
+      const userCredential = await signInWithPopup(auth, provider);
+      const user = userCredential.user;
+      const name = user.displayName;
+      const email = user.email;
+      const profilePic = user.photoURL;
+      setOpen(false);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -177,6 +190,7 @@ export default function Example({ open, setOpen }) {
                   <div className="flex flex-col justify-center items-center w-full">
                     <div class="px-6 sm:px-0 max-w-sm">
                       <button
+                        onClick={() => signInWithGoogle()}
                         type="button"
                         class="text-white w-full  bg-[#4285F4] hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between dark:focus:ring-[#4285F4]/55 mr-2 mb-2 transition-all duration-300"
                       >

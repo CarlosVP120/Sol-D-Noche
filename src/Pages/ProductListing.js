@@ -84,7 +84,7 @@ const ProductListing = ({ type }) => {
   }, [type]);
 
   return (
-    <div className="w-screen h-screen flex flex-col">
+    <div className="flex flex-col ">
       <LoginModal open={open} setOpen={setOpen} />
       <Navbar type={type} setOpen={setOpen} currentUser={currentUser} />
 
