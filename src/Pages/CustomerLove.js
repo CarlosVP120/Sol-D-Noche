@@ -25,7 +25,7 @@ const testimonials = [
 
 const CustomerLove = () => {
   return (
-    <div className="bg-gray-100 py-12" id="customer-love">
+    <div className="bg-gray-100 pb-12" id="customer-love">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-yellow-500 text-center mb-12">
           Customer Love
