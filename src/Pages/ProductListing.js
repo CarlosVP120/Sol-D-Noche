@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/NavbarForProducts";
 import ProductCard from "../Components/ProductCard";
+import LoginModal from "../Components/LoginModal";
+import UseAuth from "../custom-hooks/UseAuth";
 
 const DummyData = [
   {
@@ -42,6 +44,8 @@ const DummyData = [
 
 const ProductListing = ({ type }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [open, setOpen] = useState(false);
+  const currentUser = UseAuth();
 
   useEffect(() => {
     if (type === "all") {
@@ -53,12 +57,13 @@ const ProductListing = ({ type }) => {
 
   return (
     <div className="w-screen h-screen flex flex-col">
-      <Navbar type={type} />
+      <LoginModal open={open} setOpen={setOpen} />
+      <Navbar type={type} setOpen={setOpen} currentUser={currentUser} />
 
       <div className="w-full sm:w-4/5 mx-auto mt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
           {filteredProducts.map((product) => (
-            <ProductCard product={product} />
+            <ProductCard product={product} key={product.name} />
           ))}
         </div>
       </div>
