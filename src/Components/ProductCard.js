@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
           <div className="rounded-full h-4 w-4 bg-red-500"></div>
         </div>
       )}
-    </div>
+    </div>  
   );
 };
 
