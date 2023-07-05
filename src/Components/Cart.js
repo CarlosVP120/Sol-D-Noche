@@ -44,7 +44,7 @@ export default function Cart({ open, setOpen, cartItems, setCartItems }) {
           >
             <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-full sm:w-1/3">
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div className="sm:flex sm:items-start">
+                <div className="">
                   <div className="mt-3 text-center sm:mt-0 sm:text-left">
                     <Dialog.Title
                       as="h3"
@@ -72,7 +72,7 @@ export default function Cart({ open, setOpen, cartItems, setCartItems }) {
                                   <p className="text-gray-900 font-medium">
                                     {product.name}
                                   </p>
-                                  <p className="text-gray-500">
+                                  <p className="text-gray-500 flex justify-start items-center">
                                     ${product.price}
                                   </p>
                                 </div>
