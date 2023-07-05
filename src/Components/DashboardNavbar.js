@@ -60,7 +60,9 @@ export default function WithAction({ showingComponent, setShowingComponent }) {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box>Logo</Box>
+            <a className="font-bold" href="/">
+              Sol <span className="text-yellow-500">D</span> Noche
+            </a>
             <HStack
               as={"nav"}
               spacing={4}
