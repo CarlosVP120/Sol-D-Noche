@@ -47,7 +47,7 @@ const AddProduct = () => {
 
       // * Optional;
       toast({
-        title: "Product Added In the database",
+        title: "Product Added Successfully",
         status: "success",
         isClosable: true,
         position: "top-center",
@@ -165,7 +165,7 @@ const AddProduct = () => {
           </Box>
 
           <Box my="4">
-            <label htmlFor="stoneType">Name of the product:</label>
+            <label htmlFor="stoneType">Stone Type:</label>
             <Input
               id="stoneType"
               placeholder="Stone Type"
@@ -186,9 +186,7 @@ const AddProduct = () => {
                 }}
                 mt={1}
               >
-                {product.images.length > 0
-                  ? "Cambiar imágenes"
-                  : "Agregar imágenes"}
+                {product.images.length > 0 ? "Change Images" : "Add Images"}
               </Button>
               {/* Modal */}
               {modalOpen && (
@@ -218,7 +216,7 @@ const AddProduct = () => {
         </Box>
 
         <Button onClick={AddProduct} colorScheme="teal">
-          Agregar Propiedad
+          Add Product
         </Button>
 
         {/* For that shows the images */}

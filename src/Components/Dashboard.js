@@ -39,7 +39,7 @@ import {
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../Firebase/firebase-config";
-import PropertyCard from "./PropertyCard";
+import PropertyCard from "./ProductDashboardCard";
 import UseAuth from "../custom-hooks/UseAuth";
 
 const Home = () => {

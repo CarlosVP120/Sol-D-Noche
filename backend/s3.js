@@ -7,8 +7,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const region = "us-west-2";
-const bucketName = "aws-webdemo-bucket";
+const region = "us-west-1";
+const bucketName = "soldnoche";
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
 const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 

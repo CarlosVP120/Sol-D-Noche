@@ -50,7 +50,7 @@ export default function Example({ open, setOpen, product }) {
                   {/* Image of 1/2 */}
                   <div className="flex flex-col w-1/2 justify-center ">
                     <img
-                      className="h-full max-h-[60vh] object-cover rounded-lg"
+                      className="h-[60vh] object-cover rounded-lg"
                       src={currentImage}
                       alt={product.name}
                     />

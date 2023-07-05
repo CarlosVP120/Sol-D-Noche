@@ -102,7 +102,11 @@ const ProductListing = ({ type }) => {
   const getData = async () => {
     try {
       onSnapshot(productsRef, (res) => {
-        const data = res.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        const data = [];
+        res.forEach((doc) => {
+          data.push(doc.data());
+        });
+
         setProducts(data);
       });
 
@@ -125,7 +129,7 @@ const ProductListing = ({ type }) => {
     } else {
       setFilteredProducts(products.filter((product) => product.type === type));
     }
-  }, [type]);
+  }, [type, products]);
 
   return (
     <div className="flex flex-col ">
