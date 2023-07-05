@@ -4,7 +4,8 @@ import App from "./App";
 import Products from "./Pages/Products";
 import ProductListing from "./Pages/ProductListing";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Dashboard from "./Pages/Dashboard";
+import Dashboard from "./Pages/DashboardPage";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const router = createBrowserRouter([
   {
@@ -17,11 +18,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/products/beaded-bags",
-    element: <ProductListing type="beaded-bags" />,
+    element: <ProductListing type="Beaded Bags" />,
   },
   {
     path: "/products/necklaces",
-    element: <ProductListing type="necklaces" />,
+    element: <ProductListing type="Necklaces" />,
   },
   {
     path: "/products/all",
@@ -36,6 +37,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ChakraProvider>
+      <RouterProvider router={router} />
+    </ChakraProvider>
   </React.StrictMode>
 );

@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import UseAuth from "../custom-hooks/UseAuth";
 import { collection, onSnapshot } from "@firebase/firestore";
 import { auth, db, provider } from "../Firebase/firebase-config";
+import Dashboard from "../Components/Dashboard";
+import DashboardNavbar from "../Components/DashboardNavbar";
+import NewProduct from "../Components/NewProduct";
 
-const Dashboard = () => {
+const DashboardPage = () => {
   const [loading, setLoading] = useState(true);
+
+  const [showingComponent, setShowingComponent] = useState("Dashboard");
 
   const authListener = () => {
     auth.onAuthStateChanged((user) => {
@@ -27,18 +32,26 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div>
+    <>
       {loading ? (
         <div className="flex justify-center items-center h-screen">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500"></div>
         </div>
       ) : (
-        <div className="flex flex-col justify-center items-center h-screen">
-          <h1 className="text-4xl font-bold text-stone-500">Dashboard</h1>
-        </div>
+        <>
+          <DashboardNavbar
+            showingComponent={showingComponent}
+            setShowingComponent={setShowingComponent}
+          />
+          {showingComponent === "Dashboard" ? (
+            <Dashboard />
+          ) : showingComponent === "NewProduct" ? (
+            <NewProduct />
+          ) : null}
+        </>
       )}
-    </div>
+    </>
   );
 };
 
-export default Dashboard;
+export default DashboardPage;

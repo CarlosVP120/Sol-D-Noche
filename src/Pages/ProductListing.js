@@ -5,6 +5,7 @@ import LoginModal from "../Components/LoginModal";
 import UseAuth from "../custom-hooks/UseAuth";
 import { collection, onSnapshot } from "@firebase/firestore";
 import { db } from "../Firebase/firebase-config";
+import toast, { Toaster } from "react-hot-toast";
 
 const DummyData = [
   {
@@ -112,6 +113,9 @@ const ProductListing = ({ type }) => {
   };
 
   useEffect(() => {
+    if (currentUser) {
+      toast.success(`Bienvenido ${currentUser.email}`);
+    }
     getData();
   }, []);
 
@@ -135,6 +139,7 @@ const ProductListing = ({ type }) => {
           ))}
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };
