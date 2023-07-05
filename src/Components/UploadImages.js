@@ -120,19 +120,19 @@ const UploadImages = ({ modalOpen, setModalOpen, product, setProduct }) => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
               class="close-button"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
           </div>
           <div className="top">
-            <p>Arrastra y suelta las imágenes</p>
+            <p>Drag & Drop your images here</p>
           </div>
           <div
             className="drag-area"
@@ -141,12 +141,12 @@ const UploadImages = ({ modalOpen, setModalOpen, product, setProduct }) => {
             onDrop={onDrop}
           >
             {isDragging ? (
-              <span className="select">Suelta las imágenes</span>
+              <span className="select">Drop the images here</span>
             ) : (
               <>
-                Arrastra y suelta las imágenes aquí o
+                Drag & Drop the images here or
                 <span className="select" role="button" onClick={selectFiles}>
-                  Buscar
+                  Select Images
                 </span>
               </>
             )}
@@ -172,7 +172,7 @@ const UploadImages = ({ modalOpen, setModalOpen, product, setProduct }) => {
           </div>
 
           <button type="button" className="upload" onClick={uploadImages}>
-            Agregar
+            Upload
           </button>
         </div>
       </div>

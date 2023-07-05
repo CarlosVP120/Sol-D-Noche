@@ -120,7 +120,7 @@ const PropertyCard = ({ product }) => {
                 setAccess("editar");
               }}
             >
-              Editar
+              Edit
             </Button>
             {/* When user clicks on View button, set the access state to "ver" */}
             <Button
@@ -130,7 +130,7 @@ const PropertyCard = ({ product }) => {
                 setAccess("ver");
               }}
             >
-              Ver
+              View
             </Button>
           </ButtonGroup>
         </CardFooter>
@@ -151,7 +151,7 @@ const ModalView = ({ property, setAccess }) => {
     <Modal isCentered isOpen={true} onClose={() => setAccess("")}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Ver Propiedad</ModalHeader>
+        <ModalHeader>View Product</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <p>Modal body text goes here.</p>
@@ -169,7 +169,7 @@ const ModalEdit = ({ property, setAccess }) => {
     <Modal isCentered isOpen={true} onClose={() => setAccess("")}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Editar Propiedad</ModalHeader>
+        <ModalHeader>Editar Product</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <p>Modal body text goes here.</p>

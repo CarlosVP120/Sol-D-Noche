@@ -6,6 +6,7 @@ import UseAuth from "../custom-hooks/UseAuth";
 import { collection, onSnapshot } from "@firebase/firestore";
 import { db } from "../Firebase/firebase-config";
 import toast, { Toaster } from "react-hot-toast";
+import Cart from "../Components/Cart";
 
 const ProductListing = ({ type }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -13,6 +14,9 @@ const ProductListing = ({ type }) => {
   const currentUser = UseAuth();
   const [products, setProducts] = useState([]);
   const productsRef = collection(db, "products");
+
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
 
   // * To get the data from database
   const getData = async () => {
@@ -47,15 +51,34 @@ const ProductListing = ({ type }) => {
     }
   }, [type, products]);
 
+  const cartLength = cartItems.length;
+
   return (
     <div className="flex flex-col bg-[#f5f5f5] min-h-screen">
       <LoginModal open={open} setOpen={setOpen} />
-      <Navbar type={type} setOpen={setOpen} currentUser={currentUser} />
+      <Cart
+        open={cartOpen}
+        setOpen={setCartOpen}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+      />
+      <Navbar
+        type={type}
+        setOpen={setOpen}
+        currentUser={currentUser}
+        setOpenCart={setCartOpen}
+        cartLength={cartLength}
+      />
 
       <div className="w-full sm:w-4/5 mx-auto mt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
           {filteredProducts.map((product) => (
-            <ProductCard product={product} key={product.name} />
+            <ProductCard
+              product={product}
+              key={product.name}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
           ))}
         </div>
       </div>
