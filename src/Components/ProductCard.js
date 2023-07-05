@@ -12,9 +12,9 @@ const ProductCard = ({ product }) => {
         onClick={() => setOpen(true)}
       >
         <img
-          src={product.image}
+          src={product.images[0]}
           alt={product.name}
-          className="w-full h-[45vh] object-cover"
+          className="w-full h-[45vh] object-cover rounded-lg"
         />
         <div className="flex flex-row mt-1 justify-between items-center">
           <h2 className="text-gray-600">{product.name}</h2>

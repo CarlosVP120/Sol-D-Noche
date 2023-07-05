@@ -4,6 +4,7 @@ import App from "./App";
 import Products from "./Pages/Products";
 import ProductListing from "./Pages/ProductListing";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Dashboard from "./Pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/products/all",
     element: <ProductListing type="all" />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 

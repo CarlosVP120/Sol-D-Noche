@@ -3,70 +3,90 @@ import Navbar from "../Components/NavbarForProducts";
 import ProductCard from "../Components/ProductCard";
 import LoginModal from "../Components/LoginModal";
 import UseAuth from "../custom-hooks/UseAuth";
+import { collection, onSnapshot } from "@firebase/firestore";
+import { db } from "../Firebase/firebase-config";
 
 const DummyData = [
   {
     name: "Yellow bag",
     price: 100,
-    image: "../images/Bolsa-Amarilla.png",
+    images: ["../images/Bolsa-Amarilla.png"],
     type: "beaded-bags",
     availability: "Available",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facilis rerum quibusdam architecto aliquid. Aperiam quidem cupiditate, excepturi sit eos facilis a culpa eveniet hic quis neque facere iusto odit odio sequi dolore ab? Quam eaque beatae earum est neque, quia aliquam eveniet quaerat itaque, veritatis vero molestiae facilis aliquid.",
   },
   {
     name: "Necklaces",
     price: 100,
-    image: "../images/Collar.png",
+    images: ["../images/Collar.png"],
     type: "necklaces",
     availability: "Available",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facilis rerum quibusdam architecto aliquid. Aperiam quidem cupiditate, excepturi sit eos facilis a culpa eveniet hic quis neque facere iusto odit odio sequi dolore ab? Quam eaque beatae earum est neque, quia aliquam eveniet quaerat itaque, veritatis vero molestiae facilis aliquid.",
   },
   {
     name: "Pearl necklaces",
     price: 100,
-    image: "../images/image3.png",
+    images: ["../images/image3.png"],
     type: "necklaces",
     availability: "Available",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facilis rerum quibusdam architecto aliquid. Aperiam quidem cupiditate, excepturi sit eos facilis a culpa eveniet hic quis neque facere iusto odit odio sequi dolore ab? Quam eaque beatae earum est neque, quia aliquam eveniet quaerat itaque, veritatis vero molestiae facilis aliquid.",
   },
   {
     name: "Pink bag",
     price: 100,
-    image: "../images/image4.png",
+    images: ["../images/image4.png"],
     type: "beaded-bags",
     availability: "Sold",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facilis rerum quibusdam architecto aliquid. Aperiam quidem cupiditate, excepturi sit eos facilis a culpa eveniet hic quis neque facere iusto odit odio sequi dolore ab? Quam eaque beatae earum est neque, quia aliquam eveniet quaerat itaque, veritatis vero molestiae facilis aliquid.",
   },
   {
     name: "Orange bag",
     price: 100,
-    image: "../images/image8.png",
+    images: ["../images/image8.png"],
     type: "beaded-bags",
     availability: "Sold",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facilis rerum quibusdam architecto aliquid. Aperiam quidem cupiditate, excepturi sit eos facilis a culpa eveniet hic quis neque facere iusto odit odio sequi dolore ab? Quam eaque beatae earum est neque, quia aliquam eveniet quaerat itaque, veritatis vero molestiae facilis aliquid.",
   },
   {
     name: "Sea necklaces",
     price: 100,
-    image: "../images/image10.png",
+    images: ["../images/image10.png"],
     type: "necklaces",
     availability: "Available",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facilis rerum quibusdam architecto aliquid. Aperiam quidem cupiditate, excepturi sit eos facilis a culpa eveniet hic quis neque facere iusto odit odio sequi dolore ab? Quam eaque beatae earum est neque, quia aliquam eveniet quaerat itaque, veritatis vero molestiae facilis aliquid.",
   },
   {
     name: "Silver bag",
     price: 100,
-    image: "../images/image13.png",
+    images: ["../images/image13.png"],
     type: "beaded-bags",
     availability: "Available",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facilis rerum quibusdam architecto aliquid. Aperiam quidem cupiditate, excepturi sit eos facilis a culpa eveniet hic quis neque facere iusto odit odio sequi dolore ab? Quam eaque beatae earum est neque, quia aliquam eveniet quaerat itaque, veritatis vero molestiae facilis aliquid.",
   },
   {
     name: "Color necklaces",
     price: 100,
-    image: "../images/image11.png",
+    images: ["../images/image11.png"],
     type: "necklaces",
     availability: "Sold",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facilis rerum quibusdam architecto aliquid. Aperiam quidem cupiditate, excepturi sit eos facilis a culpa eveniet hic quis neque facere iusto odit odio sequi dolore ab? Quam eaque beatae earum est neque, quia aliquam eveniet quaerat itaque, veritatis vero molestiae facilis aliquid.",
   },
   {
     name: "Blue necklaces",
     price: 100,
-    image: "../images/image12.png",
+    images: ["../images/image12.png"],
     type: "necklaces",
     availability: "Available",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facilis rerum quibusdam architecto aliquid. Aperiam quidem cupiditate, excepturi sit eos facilis a culpa eveniet hic quis neque facere iusto odit odio sequi dolore ab? Quam eaque beatae earum est neque, quia aliquam eveniet quaerat itaque, veritatis vero molestiae facilis aliquid.",
   },
 ];
 
@@ -74,12 +94,32 @@ const ProductListing = ({ type }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [open, setOpen] = useState(false);
   const currentUser = UseAuth();
+  const [products, setProducts] = useState([]);
+  const productsRef = collection(db, "products");
+
+  // * To get the data from database
+  const getData = async () => {
+    try {
+      onSnapshot(productsRef, (res) => {
+        const data = res.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        setProducts(data);
+      });
+
+      console.log(products);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   useEffect(() => {
     if (type === "all") {
-      setFilteredProducts(DummyData);
+      setFilteredProducts(products);
     } else {
-      setFilteredProducts(DummyData.filter((product) => product.type === type));
+      setFilteredProducts(products.filter((product) => product.type === type));
     }
   }, [type]);
 

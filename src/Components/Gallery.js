@@ -126,15 +126,18 @@ const Gallery = () => {
   };
 
   return (
-    <div className="w-full pt-8" id="gallery">
-      <div className="w-9/12 sm:w-11/12 mx-auto my-8">
-        <Slider ref={sliderRef} {...settings}>
+    <div className="w-full pt-8 h-full" id="gallery">
+      <div className="w-9/12 sm:w-11/12 mx-auto my-8 h-full ">
+        <Slider ref={sliderRef} {...settings} className="h-full flex">
           {images.map((image, index) => (
-            <div key={index} className="relative overflow-hidden rounded-lg">
+            <div
+              key={index}
+              className="relative overflow-hidden rounded-lg h-full"
+            >
               <img
                 src={image.src}
                 alt={image.alt}
-                className="object-cover w-full transition duration-300 ease-in-out transform hover:scale-105"
+                className="flex w-full transition duration-300 ease-in-out transform hover:scale-105 h-[50vh] object-cover"
               />
 
               <div className="absolute inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity">
