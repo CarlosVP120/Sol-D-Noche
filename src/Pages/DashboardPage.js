@@ -15,7 +15,9 @@ const DashboardPage = () => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         auth.currentUser = user;
-        if (auth.currentUser.email !== "admin@admin.com") {
+        if (auth.currentUser.email == "admin@admin.com") {
+          setLoading(false);
+        } else {
           window.location.href = "/";
         }
       } else {
@@ -23,8 +25,6 @@ const DashboardPage = () => {
         window.location.href = "/";
       }
     });
-
-    setLoading(false);
   };
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const DashboardPage = () => {
   return (
     <>
       {loading ? (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center h-screen bg-white">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500"></div>
         </div>
       ) : (
