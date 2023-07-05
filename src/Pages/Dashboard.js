@@ -18,6 +18,8 @@ const Dashboard = () => {
         window.location.href = "/";
       }
     });
+
+    setLoading(false);
   };
 
   useEffect(() => {
