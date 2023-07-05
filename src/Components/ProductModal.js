@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import { auth, db, provider } from "../Firebase/firebase-config";
 import { doc, setDoc } from "firebase/firestore";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Example({
   open,
@@ -22,6 +23,8 @@ export default function Example({
 
   const addToCart = (product) => {
     setCartItems((prevItems) => [...prevItems, product]);
+    toast.success("Producto agregado al carrito");
+    setOpen(false);
     console.log(cartItems);
   };
 
@@ -224,7 +227,9 @@ export default function Example({
                           </button>
                           <button
                             className="w-2/3 sm:w-1/2  flex justify-center items-center gap-1 bg-blue-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-stone-600 transition-all duration-300"
-                            onClick={() => addToCart(product)}
+                            onClick={() => {
+                              addToCart(product);
+                            }}
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -269,6 +274,7 @@ export default function Example({
             </Transition.Child>
           </div>
         </div>
+        <Toaster />
       </Dialog>
     </Transition.Root>
   );
