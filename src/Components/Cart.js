@@ -9,6 +9,11 @@ export default function Cart({ open, setOpen, cartItems, setCartItems }) {
     setCartItems(newCartItems);
   };
 
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + Number(item.price),
+    0
+  );
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -87,7 +92,7 @@ export default function Cart({ open, setOpen, cartItems, setCartItems }) {
                           ))}
                           <div className="flex justify-between items-center border-b border-gray-200 py-2">
                             <p className="font-medium">Total:</p>
-                            <p className="font-medium"></p>
+                            <p className="font-medium">${totalPrice}</p>
                           </div>
                         </div>
                       )}
