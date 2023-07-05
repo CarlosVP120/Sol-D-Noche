@@ -39,50 +39,13 @@ import {
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../Firebase/firebase-config";
-import PropertyCard from "./ProductDashboardCard";
+import ProductDashboardCard from "./ProductDashboardCard";
 import UseAuth from "../custom-hooks/UseAuth";
 
 const Home = () => {
   const currentUser = UseAuth();
   const [products, setProducts] = useState([]);
   const toast = useToast();
-
-  // todo: update the product
-  const UpdateProduct = async (id) => {
-    try {
-      const productRef = doc(db, "properties", id);
-      const temp = window.prompt("Please Re-enter the Property_name");
-      await updateDoc(productRef, { productName: temp });
-      getData();
-
-      // * optional
-      toast({
-        title: "Product Updated",
-        status: "success",
-        isClosable: true,
-        position: "top-right",
-      });
-    } catch (error) {
-      console.log("error: ", error);
-    }
-  };
-  // todo: Delete the Product
-  const DeleteProduct = async (id) => {
-    try {
-      const productRef = doc(db, "properties", id);
-      await deleteDoc(productRef);
-      getData();
-      // * optional
-      toast({
-        title: "Product Deleted",
-        status: "success",
-        isClosable: true,
-        position: "top-right",
-      });
-    } catch (error) {
-      console.log("error: ", error);
-    }
-  };
 
   // * TO get the data from database
   const getData = async () => {
@@ -125,16 +88,16 @@ const Home = () => {
           </Heading>
         </Flex>
       )}
-      <SimpleGrid
-        spacing={4}
-        templateColumns="repeat(auto-fill)"
+      <Flex
+        spacing={20}
+        gap={10}
         // templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
         px={10}
       >
         {/* CARDS */}
         {products.length > 0 ? (
-          products.map((property, index) => (
-            <PropertyCard property={property} key={index} />
+          products.map((product, index) => (
+            <ProductDashboardCard product={product} key={index} />
           ))
         ) : (
           // Center the text
@@ -148,7 +111,7 @@ const Home = () => {
             No products found
           </Text>
         )}
-      </SimpleGrid>
+      </Flex>
     </>
   );
 };

@@ -21,9 +21,54 @@ import {
   keyframes,
 } from "@chakra-ui/react";
 import { useState, useRef } from "react";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
+import { db } from "../Firebase/firebase-config";
 
-const PropertyCard = ({ property }) => {
+const PropertyCard = ({ product }) => {
   const [access, setAccess] = useState("");
+
+  // // todo: update the product
+  // const UpdateProduct = async (id) => {
+  //   try {
+  //     const productRef = doc(db, "properties", id);
+  //     const temp = window.prompt("Please Re-enter the Property_name");
+  //     await updateDoc(productRef, { productName: temp });
+  //     getData();
+
+  //     // * optional
+  //     toast({
+  //       title: "Product Updated",
+  //       status: "success",
+  //       isClosable: true,
+  //       position: "top-right",
+  //     });
+  //   } catch (error) {
+  //     console.log("error: ", error);
+  //   }
+  // };
+  // // todo: Delete the Product
+  // const DeleteProduct = async (id) => {
+  //   try {
+  //     const productRef = doc(db, "properties", id);
+  //     await deleteDoc(productRef);
+  //     getData();
+  //     // * optional
+  //     toast({
+  //       title: "Product Deleted",
+  //       status: "success",
+  //       isClosable: true,
+  //       position: "top-right",
+  //     });
+  //   } catch (error) {
+  //     console.log("error: ", error);
+  //   }
+  // };
 
   const appear = keyframes`
     from {
@@ -42,19 +87,25 @@ const PropertyCard = ({ property }) => {
       <Card maxW="sm" animation={appearAnimation} boxShadow="2xl">
         <CardBody>
           <Image
-            src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+            src={product.images[0]}
             alt="Green double couch with wooden legs"
             borderRadius="lg"
+            h={96}
+            w={"100%"}
           />
           <Stack mt="6" spacing="3">
-            <Heading size="md">Living room Sofa</Heading>
-            <Text>
-              This sofa is perfect for modern tropical spaces, baroque inspired
-              spaces, earthy toned spaces and for people who love a chic design
-              with a sprinkle of vintage design.
+            <Heading size="md">
+              {product.name.length > 20
+                ? product.name.slice(0, 20) + "..."
+                : product.name}
+            </Heading>
+            <Text h={"16"}>
+              {product.description.length > 50
+                ? product.description.slice(0, 50) + "..."
+                : product.description}
             </Text>
             <Text color="blue.600" fontSize="2xl">
-              $450
+              {product.price} MXN
             </Text>
           </Stack>
         </CardBody>
@@ -87,9 +138,9 @@ const PropertyCard = ({ property }) => {
       {/* MODAL */}
       {/* When access state is "editar", show the ModalEdit component, when access state is "ver", show the ModalView component */}
       {access === "editar" ? (
-        <ModalEdit property={property} setAccess={setAccess} />
+        <ModalEdit property={product} setAccess={setAccess} />
       ) : access === "ver" ? (
-        <ModalView property={property} setAccess={setAccess} />
+        <ModalView property={product} setAccess={setAccess} />
       ) : null}
     </>
   );

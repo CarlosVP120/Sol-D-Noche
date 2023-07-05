@@ -45,12 +45,12 @@ export default function Example({ open, setOpen, product }) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all sm:my-8 w-[45%]">
-                <div className="bg-white px-4 py-5 flex w-full">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all sm:my-8 w-[95%] md:w-[45%]">
+                <div className="bg-white px-4 py-5 flex flex-col w-full sm:flex-row">
                   {/* Image of 1/2 */}
-                  <div className="flex flex-col w-1/2 justify-center ">
+                  <div className="flex flex-col sm:w-1/2 justify-center ">
                     <img
-                      className="h-[60vh] object-cover rounded-lg"
+                      className="h-[40vh] mt-8 sm:mt-0 sm:h-[60vh] object-cover rounded-lg"
                       src={currentImage}
                       alt={product.name}
                     />
@@ -87,7 +87,7 @@ export default function Example({ open, setOpen, product }) {
                       {/* Images */}
                       {product.images.map((image) => (
                         <img
-                          className="h-20 object-cover rounded-lg cursor-pointer"
+                          className=" h-10 sm:h-20 object-cover rounded-lg cursor-pointer"
                           src={image}
                           alt={product.name}
                           onClick={() => setCurrentImage(image)}
@@ -122,7 +122,7 @@ export default function Example({ open, setOpen, product }) {
                       )}
                     </div>
                   </div>
-                  <div className="flex w-1/2 flex-col p-4 justify-between pb-24">
+                  <div className="flex sm:w-1/2 flex-col p-4 justify-between sm:pb-24">
                     {/* Close button */}
                     <div className="absolute top-0 right-0 p-4">
                       <button
@@ -148,10 +148,10 @@ export default function Example({ open, setOpen, product }) {
                       </button>
                     </div>
 
-                    <h1 className="text-4xl font-bold text-gray-800 text-left">
+                    <h1 className="text-lg sm:text-4xl font-bold text-gray-800 text-left flex flex-col">
                       {product.name}
-                      <div className="w-1/2 h-1 bg-gray-200 rounded-full mt-4"></div>
-                      <span className="text-2xl text-stone-500">
+                      <div className="hidden sm:flex w-1/2 h-1 bg-gray-200 rounded-full mt-4"></div>
+                      <span className="text-base pb-2 sm:pb-0 sm:text-2xl text-stone-500">
                         {product.type
                           .split("-")
                           .join(" ")
@@ -160,17 +160,17 @@ export default function Example({ open, setOpen, product }) {
                     </h1>
                     {/* Divider */}
 
-                    <p className="text-gray-600 text-left text-xl">
+                    <p className="text-gray-600 text-left text-base sm:text-xl">
                       {product.description}
                       {/* Divider */}
-                      <div className="w-1/2 h-1 bg-gray-200 rounded-full my-4"></div>
+                      <div className="hidden sm:flex w-1/2 h-1 bg-gray-200 rounded-full my-4"></div>
                     </p>
 
                     <div className="flex flex-row justify-between items-center border-y-2 border-gray-200 py-4">
-                      <h2 className="text-gray-600 text-left text-2xl">
+                      <h2 className="text-gray-600 text-left text-lg sm:text-2xl">
                         ${product.price}.00 MXN
                       </h2>
-                      <div className="text-gray-600 text-left text-2xl flex flex-row justify-between items-center gap-2">
+                      <div className="text-gray-600 text-left text-lg sm:text-2xl flex flex-row justify-between items-center gap-2">
                         <p className="text-gray-600 text-left">
                           {product.availability}
                         </p>
@@ -186,10 +186,10 @@ export default function Example({ open, setOpen, product }) {
 
                     {/* Buttons to buy, add to cart, and share */}
 
-                    <div className="flex flex-row justify-center gap-5 items-center">
+                    <div className="flex flex-row justify-center  gap-2 sm:gap-5 items-center mt-4 sm:mt-0">
                       {product.availability !== "Sold" && (
                         <>
-                          <button className="w-1/3 flex justify-center items-center gap-1 bg-green-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-stone-600 transition-all duration-300">
+                          <button className=" w-1/3 sm:w-1/3 flex justify-center items-center gap-1 bg-green-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-stone-600 transition-all duration-300">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
@@ -206,7 +206,7 @@ export default function Example({ open, setOpen, product }) {
                             </svg>
                             Buy
                           </button>
-                          <button className="w-1/3 flex justify-center items-center gap-1 bg-blue-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-stone-600 transition-all duration-300">
+                          <button className=" w-2/3 sm:w-1/3  flex justify-center items-center gap-1 bg-blue-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-stone-600 transition-all duration-300">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
@@ -225,7 +225,7 @@ export default function Example({ open, setOpen, product }) {
                           </button>
                         </>
                       )}
-                      <button className="w-1/3 flex justify-center items-center gap-1 bg-yellow-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-stone-600 transition-all duration-300">
+                      <button className="hidden sm:flex w-1/3  justify-center items-center gap-1 bg-yellow-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-stone-600 transition-all duration-300">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
