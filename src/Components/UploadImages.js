@@ -110,7 +110,7 @@ const UploadImages = ({ modalOpen, setModalOpen, product, setProduct }) => {
   const appearAnimation = `${appear} 0.3s ease-in-out`;
 
   return (
-    <Box animation={appearAnimation} zIndex={1000}>
+    <Box animation={appearAnimation} zIndex={1000} pos="fixed" top="0" left="0">
       <div className="ModalBody">
         <div className="card">
           <div className="close-div" onClick={() => setModalOpen(!modalOpen)}>

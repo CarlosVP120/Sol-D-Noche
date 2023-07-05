@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import { auth, db, provider } from "../Firebase/firebase-config";
 import { doc, setDoc } from "firebase/firestore";
+import { set } from "lodash";
 
 export default function Example({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
@@ -17,6 +18,30 @@ export default function Example({ open, setOpen }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  // * Signup function with email and password
+  const Signup = async () => {
+    try {
+      if (password !== confirmPassword) {
+        alert("Password does not match");
+        return;
+      }
+
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      ).then((userCredential) => {
+        SignIn();
+      });
+
+      setEmail("");
+      setPassword("");
+      setOpen(false);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
 
   const SignIn = async () => {
     try {
@@ -156,6 +181,10 @@ export default function Example({ open, setOpen }) {
                                   required
                                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
                                   placeholder="Confirm Password"
+                                  value={confirmPassword}
+                                  onChange={(e) =>
+                                    setConfirmPassword(e.target.value)
+                                  }
                                 />
                               </div>
                             )}
@@ -178,7 +207,7 @@ export default function Example({ open, setOpen }) {
                     <button
                       type="button"
                       className="inline-flex w-1/2 justify-center rounded-md bg-yellow-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-600 transition-all duration-300"
-                      onClick={() => setOpen(false)}
+                      onClick={() => Signup()}
                     >
                       Sign up
                     </button>
