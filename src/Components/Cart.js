@@ -77,7 +77,7 @@ export default function Cart({ open, setOpen, cartItems, setCartItems }) {
                                   <p className="text-gray-900 font-medium">
                                     {product.name}
                                   </p>
-                                  <p className="text-gray-500 flex justify-start items-center">
+                                  <p className="text-gray-500 font-medium flex justify-start items-center">
                                     ${product.price}
                                   </p>
                                 </div>
@@ -92,7 +92,7 @@ export default function Cart({ open, setOpen, cartItems, setCartItems }) {
                           ))}
                           <div className="flex justify-between items-center border-b border-gray-200 py-2">
                             <p className="font-medium">Total:</p>
-                            <p className="font-medium">${totalPrice}</p>
+                            <p className="font-bold">${totalPrice}</p>
                           </div>
                         </div>
                       )}
