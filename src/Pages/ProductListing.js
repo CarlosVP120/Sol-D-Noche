@@ -48,7 +48,7 @@ const ProductListing = ({ type }) => {
   }, [type, products]);
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col bg-[#f5f5f5] min-h-screen">
       <LoginModal open={open} setOpen={setOpen} />
       <Navbar type={type} setOpen={setOpen} currentUser={currentUser} />
 
