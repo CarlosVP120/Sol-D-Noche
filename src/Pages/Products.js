@@ -18,8 +18,8 @@ const Products = () => {
         {/* Black Overlay and Text */}
         <a
           href="/products/beaded-bags"
-          className={`absolute h-[50vh] sm:w-1/2 sm:h-full flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-all duration-300 ${
-            purseSelected ? "opacity-100" : ""
+          className={`opacity-100 sm:opacity-0 absolute h-[50vh] sm:w-1/2 sm:h-full flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 hover:opacity-100 transition-all duration-300 ${
+            purseSelected ? "opacity-100 !important" : ""
           }`}
         >
           <h1 className=" text-xl sm:text-5xl lg:text-6xl font-bold mb-4">
@@ -43,8 +43,8 @@ const Products = () => {
         {/* Black Overlay and Text */}
         <a
           href="/products/necklaces"
-          className={`absolute h-[50vh] sm:w-1/2 sm:h-full flex flex-col justify-center items-center text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-all duration-300 ${
-            necklaceSelected ? "opacity-100" : ""
+          className={`opacity-100 sm:opacity-0 absolute h-[50vh] sm:w-1/2 sm:h-full flex flex-col justify-center items-center text-white bg-black bg-opacity-50  hover:opacity-100 transition-all duration-300 ${
+            necklaceSelected ? "opacity-100 !important" : ""
           }`}
         >
           <h1 className="text-xl sm:text-5xl lg:text-6xl font-bold mb-4 text-center">
@@ -77,8 +77,15 @@ const Products = () => {
 
       {/* Vertical Middle Line */}
       <div
-        className={`absolute h-1 bg-white left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 rotate-90 z-10 rounded-full ${
+        className={`hidden sm:flex absolute h-1 bg-white left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 rotate-90 z-10 rounded-full ${
           middleLineAnimated ? "w-1/2" : "w-0"
+        }`}
+      ></div>
+
+      {/* Horizontal Middle Line */}
+      <div
+        className={`sm:hidden absolute h-1 bg-white left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 z-10 rounded-full ${
+          middleLineAnimated ? "w-[95vw]" : "w-0"
         }`}
       ></div>
     </div>
