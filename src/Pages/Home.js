@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "../Components/Navbar";
 
 const Home = () => {
+  const [videoLoaded, setVideoLoaded] = React.useState(false);
+
   return (
     <div className="h-screen relative overflow-hidden" id="home">
       <div className="absolute w-screen z-10">
@@ -9,10 +11,13 @@ const Home = () => {
       </div>
 
       <video
-        className="absolute w-screen h-screen -z-10 object-cover"
+        className={`absolute w-screen h-screen -z-10 object-cover transition-all duration-500 ${
+          videoLoaded ? "opacity-100" : "opacity-0"
+        }`}
         autoPlay
         loop
         muted
+        onLoad={() => setVideoLoaded(true)}
       >
         <source src="/videos/sea1.mp4" type="video/mp4" />
       </video>
