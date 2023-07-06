@@ -1,6 +1,7 @@
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import toast from "react-hot-toast";
+import { async } from "q";
 
 export default function Cart({
   open,
@@ -23,6 +24,24 @@ export default function Cart({
 
   const showToast = () => {
     toast.error("You must be logged in to checkout");
+  };
+
+  const checkout = async () => {
+    console.log(cartItems);
+
+    await fetch("http://localhost:8080/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ items: cartItems }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.url) {
+          window.location.assign(data.url);
+        }
+      });
   };
 
   return (
@@ -126,7 +145,7 @@ export default function Cart({
                   <button
                     type="button"
                     className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-                    onClick={() => setOpen(false)}
+                    onClick={checkout}
                   >
                     Checkout
                   </button>

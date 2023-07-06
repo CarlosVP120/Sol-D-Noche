@@ -31,6 +31,7 @@ const initialState = {
   images: [],
   description: "",
   stoneType: "",
+  stripeID: "",
 };
 
 const AddProduct = () => {
@@ -212,6 +213,25 @@ const AddProduct = () => {
             mt={1}
             mb={3}
             as={ResizeTextarea}
+          />
+        </Box>
+        <Box my="4">
+          <label htmlFor="stripeID">
+            Stripe ID:{" "}
+            <a
+              href="https://dashboard.stripe.com/test/products/create"
+              className="text-blue-500"
+            >
+              (Get from: https://dashboard.stripe.com/test/products/create)
+            </a>
+          </label>
+          <Input
+            id="stripeID"
+            placeholder="Stripe ID"
+            value={product.stripeID}
+            name="stripeID"
+            onChange={handleChange}
+            mt={1}
           />
         </Box>
 

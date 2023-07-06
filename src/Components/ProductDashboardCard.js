@@ -146,7 +146,6 @@ const PropertyCard = ({ product }) => {
               }}
             >
               Edit
-              Edit
             </Button>
             {/* When user clicks on Delete button, set the access state to "delete" */}
             <Button
@@ -302,7 +301,7 @@ const ModalEdit = ({ product, setAccess, UpdateProduct }) => {
             <option value="Necklaces">Necklaces</option>
           </Select>
 
-          <label htmlFor="type">StoneType</label>
+          <label htmlFor="type">Stone Type</label>
           <Input
             id="stoneType"
             placeholder="Product StoneType"
@@ -310,6 +309,17 @@ const ModalEdit = ({ product, setAccess, UpdateProduct }) => {
             mb={2}
             onChange={(e) => {
               currentProduct.stoneType = e.target.value;
+            }}
+          />
+
+          <label htmlFor="stripeID">Stripe ID</label>
+          <Input
+            id="stripeID"
+            placeholder="Product Stripe ID"
+            defaultValue={currentProduct.stripeID}
+            mb={2}
+            onChange={(e) => {
+              currentProduct.stripeID = e.target.value;
             }}
           />
           <Flex direction="column">
