@@ -6,9 +6,9 @@ const Products = () => {
   const [middleLineAnimated, setMiddleLineAnimated] = React.useState(false);
 
   return (
-    <div className="w-screen h-screen flex">
+    <div className="w-screen h-screen flex flex-col sm:flex-row overflow-hidden">
       {/* Left Container */}
-      <div className="w-1/2 h-full flex justify-center items-center">
+      <div className="h-[50vh] sm:w-1/2 sm:h-full flex justify-center items-center">
         <img
           src="images/Bolsa-Amarilla.png"
           alt="Bolsa Amarilla"
@@ -18,11 +18,11 @@ const Products = () => {
         {/* Black Overlay and Text */}
         <a
           href="/products/beaded-bags"
-          className={`absolute w-1/2 h-full flex flex-col justify-center items-center text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-all duration-300 ${
+          className={`absolute h-[50vh] sm:w-1/2 sm:h-full flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-all duration-300 ${
             purseSelected ? "opacity-100" : ""
           }`}
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+          <h1 className=" text-xl sm:text-5xl lg:text-6xl font-bold mb-4">
             Beaded Bags
           </h1>
           <p className="text-base sm:text-lg lg:text-xl text-white w-4/5 sm:w-3/5 md:w-1/2 text-center">
@@ -33,7 +33,7 @@ const Products = () => {
       </div>
 
       {/* Right Container */}
-      <div className="w-1/2 h-full flex justify-center items-center">
+      <div className="h-[50vh] sm:w-1/2 sm:h-full flex justify-center items-center">
         <img
           src="images/Collar.png"
           alt="Bolsa Amarilla"
@@ -43,11 +43,11 @@ const Products = () => {
         {/* Black Overlay and Text */}
         <a
           href="/products/necklaces"
-          className={`absolute w-1/2 h-full flex flex-col justify-center items-center text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-all duration-300 ${
+          className={`absolute h-[50vh] sm:w-1/2 sm:h-full flex flex-col justify-center items-center text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-all duration-300 ${
             necklaceSelected ? "opacity-100" : ""
           }`}
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+          <h1 className="text-xl sm:text-5xl lg:text-6xl font-bold mb-4 text-center">
             Necklaces
           </h1>
           <p className="text-base sm:text-lg lg:text-xl text-white w-4/5 sm:w-3/5 md:w-1/2 text-center">
