@@ -23,7 +23,7 @@ const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   auth: {
     user: "soldnocheweb@gmail.com",
-    pass: "npchmkhcksegdgyw",
+    pass: process.env.EMAIL_PASSWORD,
   },
   secure: true,
 });
