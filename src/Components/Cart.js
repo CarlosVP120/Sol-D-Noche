@@ -1,7 +1,14 @@
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import toast, { Toaster } from "react-hot-toast";
 
-export default function Cart({ open, setOpen, cartItems, setCartItems }) {
+export default function Cart({
+  open,
+  setOpen,
+  cartItems,
+  setCartItems,
+  currentUser,
+}) {
   const cancelButtonRef = useRef(null);
 
   const removeFromCart = (product) => {
@@ -13,6 +20,10 @@ export default function Cart({ open, setOpen, cartItems, setCartItems }) {
     (acc, item) => acc + Number(item.price),
     0
   );
+
+  const showToast = () => {
+    toast.error("You must be logged in to checkout");
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -100,14 +111,26 @@ export default function Cart({ open, setOpen, cartItems, setCartItems }) {
                   </div>
                 </div>
               </div>
+
+              {/* If current user is logged out dont permit checkout else permit checkout */}
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button
-                  type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-                  onClick={() => setOpen(false)}
-                >
-                  Checkout
-                </button>
+                {cartItems.length === 0 || !currentUser ? (
+                  <button
+                    type="button"
+                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
+                    onClick={showToast}
+                  >
+                    Checkout
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
+                    onClick={() => setOpen(false)}
+                  >
+                    Checkout
+                  </button>
+                )}
                 <button
                   type="button"
                   className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm"

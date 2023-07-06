@@ -61,6 +61,7 @@ const ProductListing = ({ type }) => {
         setOpen={setCartOpen}
         cartItems={cartItems}
         setCartItems={setCartItems}
+        currentUser={currentUser}
       />
       <Navbar
         type={type}
