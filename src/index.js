@@ -5,6 +5,7 @@ import Products from "./Pages/Products";
 import ProductListing from "./Pages/ProductListing";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "./Pages/DashboardPage";
+import Success from "./Pages/Success";
 import { ChakraProvider } from "@chakra-ui/react";
 
 const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/success",
+    element: <Success />,
   },
 ]);
 
