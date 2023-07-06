@@ -22,10 +22,15 @@ export default function Example({
   const [currentImage, setCurrentImage] = useState(product.images[0]);
 
   const addToCart = (product) => {
-    setCartItems((prevItems) => [...prevItems, product]);
-    toast.success("Producto agregado al carrito");
-    setOpen(false);
-    console.log(cartItems);
+    // only add the product if it's not already in the cart
+    if (!cartItems.find((item) => item.id === product.id)) {
+      setCartItems((prevItems) => [...prevItems, product]);
+      toast.success("Product added to cart");
+      setOpen(false);
+      console.log(cartItems);
+    } else {
+      toast.error("Product already in cart");
+    }
   };
 
   const removeFromCart = (product) => {
