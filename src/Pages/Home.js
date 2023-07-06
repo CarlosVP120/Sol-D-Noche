@@ -5,23 +5,24 @@ const Home = () => {
   const [videoLoaded, setVideoLoaded] = React.useState(false);
 
   return (
-    <div className="h-screen relative overflow-hidden" id="home">
-      <div className="absolute w-screen z-10">
+    <div className="h-screen relative overflow-hidden bg-black" id="home">
+      <div className="absolute w-screen z-30">
         <Navbar />
       </div>
 
       <video
-        className={`absolute w-screen h-screen -z-10 object-cover transition-all duration-500 bg-black ${
+        className={`absolute w-screen h-screen z-10 object-cover transition-all duration-500 bg-black ${
           videoLoaded ? "opacity-100" : "opacity-0"
         }`}
         autoPlay
         loop
         muted
+        playsinline
         onLoadedData={() => setVideoLoaded(true)}
       >
         <source src="/videos/sea1.mp4" type="video/mp4" />
       </video>
-      <div className="absolute w-screen h-screen bg-black bg-opacity-30 flex flex-col justify-center items-center">
+      <div className="absolute w-screen h-screen bg-black bg-opacity-30 flex flex-col justify-center items-center z-20">
         <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-white mb-4">
           Sol <span className="text-yellow-500">D</span> Noche
         </h1>
