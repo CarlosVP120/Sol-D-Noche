@@ -62,7 +62,7 @@ export default function Example({
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 overflow-y-auto w-screen h-screen">
-          <div className="flex min-h-full h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div className="flex min-h-full h-full justify-center p-4 text-center items-center sm:p-0">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -76,7 +76,7 @@ export default function Example({
                 <div className="bg-white px-4 py-5 flex flex-col w-full sm:flex-row">
                   <div className="flex flex-col sm:w-1/2 justify-center ">
                     <img
-                      className="h-[40vh] mt-8 sm:mt-0 sm:h-[60vh] object-cover rounded-lg"
+                      className="h-[30vh] w-2/3 sm:w-full mt-8 sm:mt-0 sm:h-[60vh] object-cover rounded-lg mx-auto"
                       src={currentImage}
                       alt={product.name}
                     />
@@ -187,7 +187,11 @@ export default function Example({
                     {/* Divider */}
 
                     <p className="text-gray-600 text-left text-base sm:text-xl">
-                      {product.description}
+                      {product.description.length > 100 ? (
+                        <span>{product.description.substring(0, 100)}...</span>
+                      ) : (
+                        <span>{product.description}</span>
+                      )}
                       {/* Divider */}
                       <div className="hidden sm:flex w-1/2 h-1 bg-gray-200 rounded-full my-4"></div>
                     </p>

@@ -20,8 +20,7 @@ const ProductCard = ({ product, cartItems, setCartItems }) => {
         <img
           src={product.images[0]}
           alt={product.name}
-          // Make the images responsive and not squezed or stretched in all screen sizes
-          className="w-full h-[40vh] sm:h-[40vh] md:h-[45vh] lg:h-[50vh]  object-cover rounded-lg"
+          className="w-full h-[45vh] sm:h-[35vh] lg:h-[40vh] xl:h-[45] object-cover rounded-lg"
         />
         <div className="flex flex-row mt-1 justify-between items-center">
           <h2 className="text-gray-600">{product.name}</h2>

@@ -92,67 +92,74 @@ const PropertyCard = ({ product }) => {
   return (
     <>
       {/* CARD */}
-      <Card animation={appearAnimation} boxShadow="2xl" h={"100%"} minW={"sm"}>
-        <CardBody>
-          <Image
-            src={product.images[0]}
-            alt="Green double couch with wooden legs"
-            borderRadius="lg"
-            h={96}
-            w={"100%"}
-          />
-          <Stack mt="6" spacing="3">
-            <Flex justify={"space-between"}>
-              <Heading size="md">
-                {product.name.length > 20
-                  ? product.name.slice(0, 20) + "..."
-                  : product.name}
-              </Heading>
-              <Heading size="md" color={"gray.500"}>
-                {product.type}: {product.stoneType}
-              </Heading>
-            </Flex>
-            <Text h={"16"}>
-              {product.description.length > 50
-                ? product.description.slice(0, 50) + "..."
-                : product.description}
-            </Text>
-            <Flex justify={"space-between"}>
-              <Text color="blue.600" fontSize="2xl">
-                {product.price} MXN
+      <div className="flex justify-center mb-8">
+        <Card
+          animation={appearAnimation}
+          boxShadow="2xl"
+          h={"100%"}
+          minW={"sm"}
+        >
+          <CardBody>
+            <Image
+              src={product.images[0]}
+              alt="Green double couch with wooden legs"
+              borderRadius="lg"
+              h={96}
+              w={"100%"}
+            />
+            <Stack mt="6" spacing="3">
+              <Flex justify={"space-between"}>
+                <Heading size="md">
+                  {product.name.length > 20
+                    ? product.name.slice(0, 20) + "..."
+                    : product.name}
+                </Heading>
+                <Heading size="md" color={"gray.500"}>
+                  {product.type}: {product.stoneType}
+                </Heading>
+              </Flex>
+              <Text h={"16"}>
+                {product.description.length > 50
+                  ? product.description.slice(0, 50) + "..."
+                  : product.description}
               </Text>
-              <Text color="blue.600" fontSize="2xl">
-                {product.availability}
-              </Text>
-            </Flex>
-          </Stack>
-        </CardBody>
-        <Divider />
-        <CardFooter>
-          <ButtonGroup spacing="2">
-            {/* When user clicks on Edit button, set the access state to "editar" */}
-            <Button
-              variant="solid"
-              colorScheme="blue"
-              onClick={() => {
-                setAccess("edit");
-              }}
-            >
-              Edit
-            </Button>
-            {/* When user clicks on Delete button, set the access state to "delete" */}
-            <Button
-              variant="solid"
-              colorScheme="red"
-              onClick={() => {
-                setAccess("delete");
-              }}
-            >
-              Delete
-            </Button>
-          </ButtonGroup>
-        </CardFooter>
-      </Card>
+              <Flex justify={"space-between"}>
+                <Text color="blue.600" fontSize="2xl">
+                  {product.price} MXN
+                </Text>
+                <Text color="blue.600" fontSize="2xl">
+                  {product.availability}
+                </Text>
+              </Flex>
+            </Stack>
+          </CardBody>
+          <Divider />
+          <CardFooter>
+            <ButtonGroup spacing="2">
+              {/* When user clicks on Edit button, set the access state to "editar" */}
+              <Button
+                variant="solid"
+                colorScheme="blue"
+                onClick={() => {
+                  setAccess("edit");
+                }}
+              >
+                Edit
+              </Button>
+              {/* When user clicks on Delete button, set the access state to "delete" */}
+              <Button
+                variant="solid"
+                colorScheme="red"
+                onClick={() => {
+                  setAccess("delete");
+                }}
+              >
+                Delete
+              </Button>
+            </ButtonGroup>
+          </CardFooter>
+        </Card>
+      </div>
       {/* MODAL */}
       {/* When access state is "editar", show the ModalEdit component, when access state is "ver", show the ModalView component */}
       {access === "edit" ? (

@@ -59,22 +59,24 @@ const Home = () => {
         px={10}
       >
         {/* CARDS */}
-        {products.length > 0 ? (
-          products.map((product, index) => (
-            <ProductDashboardCard product={product} key={index} />
-          ))
-        ) : (
-          // Center the text
-          <Text
-            fontSize="xl"
-            fontWeight="bold"
-            textAlign="center"
-            color="gray.500"
-            animation={appearAnimation}
-          >
-            No products found
-          </Text>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+          {products.length > 0 ? (
+            products.map((product, index) => (
+              <ProductDashboardCard product={product} key={index} />
+            ))
+          ) : (
+            // Center the text
+            <Text
+              fontSize="xl"
+              fontWeight="bold"
+              textAlign="center"
+              color="gray.500"
+              animation={appearAnimation}
+            >
+              No products found
+            </Text>
+          )}
+        </div>
       </Flex>
     </>
   );

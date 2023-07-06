@@ -47,14 +47,15 @@ export default function WithAction({ showingComponent, setShowingComponent }) {
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={10}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <IconButton
+          {/* <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
             aria-label={"Open Menu"}
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
-          />
-          <HStack spacing={8} alignItems={"center"}>
+          /> */}
+
+          <HStack alignItems={"center"}>
             <a className="font-bold" href="/">
               Sol <span className="text-yellow-500">D</span> Noche
             </a>
@@ -73,10 +74,12 @@ export default function WithAction({ showingComponent, setShowingComponent }) {
           </HStack>
           {/* Gap of 20px between */}
           <Flex alignItems={"center"} gap={4}>
-            <Text>{currentUser ? currentUser?.email.split("@")[0] : ""}</Text>
-            <Button onClick={toggleColorMode}>
+            <div className="hidden md:block">
+              <Text>{currentUser ? currentUser?.email.split("@")[0] : ""}</Text>
+            </div>
+            {/* <Button onClick={toggleColorMode}>
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-            </Button>
+            </Button> */}
 
             <Button
               variant={"solid"}
@@ -97,15 +100,17 @@ export default function WithAction({ showingComponent, setShowingComponent }) {
                 cursor={"pointer"}
                 minW={0}
               >
-                <Avatar
-                  size={"sm"}
-                  src={
-                    "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                  }
-                />
+                <div className="">
+                  <Avatar
+                    size={"sm"}
+                    src={
+                      "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+                    }
+                  />
+                </div>
               </MenuButton>
               <MenuList>
-                <MenuItem onClick={logout}>Cerrar Sesión</MenuItem>
+                <MenuItem onClick={logout}>Log out</MenuItem>
                 {/* <MenuItem>Link 2</MenuItem>
                 <MenuDivider />
                 <MenuItem>Link 3</MenuItem> */}
