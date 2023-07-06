@@ -29,7 +29,7 @@ export default function Cart({
   const checkout = async () => {
     console.log(cartItems);
 
-    await fetch("http://localhost:8080/checkout", {
+    await fetch("https://soldnoche-server.onrender.com/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

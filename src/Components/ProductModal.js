@@ -32,10 +32,21 @@ export default function Example({
     }
   };
 
-  const removeFromCart = (product) => {
-    setCartItems((prevItems) =>
-      prevItems.filter((item) => item.id !== product.id)
-    );
+  const checkout = async () => {
+    console.log(product);
+    await fetch("https://soldnoche-server.onrender.com/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ items: [product] }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.url) {
+          window.location.assign(data.url);
+        }
+      });
   };
 
   return (
@@ -212,7 +223,10 @@ export default function Example({
                     <div className="flex flex-row justify-center gap-2 sm:gap-5 items-center mt-4 sm:mt-0">
                       {product.availability !== "Sold" && (
                         <>
-                          <button className="w-1/3 sm:w-1/2 flex justify-center items-center gap-1 bg-green-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-stone-600 transition-all duration-300">
+                          <button
+                            onClick={checkout}
+                            className="w-1/3 sm:w-1/2 flex justify-center items-center gap-1 bg-green-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-stone-600 transition-all duration-300"
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"

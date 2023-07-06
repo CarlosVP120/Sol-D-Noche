@@ -63,9 +63,9 @@ const UploadImages = ({ modalOpen, setModalOpen, product, setProduct }) => {
       // Delete the URL field of each image
       delete images[i].url;
 
-      let { url } = await fetch("http://localhost:8080/s3Url").then((res) =>
-        res.json()
-      );
+      let { url } = await fetch(
+        "https://soldnoche-server.onrender.com/s3Url"
+      ).then((res) => res.json());
 
       // Post the image to Amazon S3
       fetch(url, {
