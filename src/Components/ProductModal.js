@@ -22,7 +22,6 @@ export default function Example({
   const [currentImage, setCurrentImage] = useState(product.images[0]);
 
   const addToCart = (product) => {
-    // only add the product if it's not already in the cart
     if (!cartItems.find((item) => item.id === product.id)) {
       setCartItems((prevItems) => [...prevItems, product]);
       toast.success("Product added to cart");
