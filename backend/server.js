@@ -55,9 +55,7 @@ const UpdateProduct = async (StripeID) => {
 };
 
 // Stripe
-const stripeClient = new stripe(
-  "sk_test_51NQgjDHWW2ECOmaz4rreGgTyALsZOvYhPoT53gfJYPYwETlX9cHX0YPAYqjaSTRH9M93P6hArSYuXQLJedOydiP800v9Ju786G"
-);
+const stripeClient = new stripe(process.env.STRIPE_SECRET_KEY);
 
 app.get("/", (req, res) => {
   res.send("hello from express");
