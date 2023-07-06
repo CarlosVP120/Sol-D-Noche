@@ -17,7 +17,7 @@ const Home = () => {
         autoPlay
         loop
         muted
-        playsinline
+        playsInline
         onLoadedData={() => setVideoLoaded(true)}
       >
         <source src="/videos/sea1.mp4" type="video/mp4" />
