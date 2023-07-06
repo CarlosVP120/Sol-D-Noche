@@ -2,8 +2,8 @@ import React from "react";
 
 function Success() {
   return (
-    <div className="w-screen h-screen flex justify-center items-center bg-[#f5f5f5]">
-      <div className="flex flex-col justify-center items-center">
+    <div className="w-screen h-screen flex justify-center items-center bg-gradient-to-r from-blue-200 to-cyan-200">
+      <div className="flex flex-col justify-center items-center bg-slate-100 p-8 rounded-lg shadow-lg">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-gray-800">
           Thanks for your purchase!
         </h1>
