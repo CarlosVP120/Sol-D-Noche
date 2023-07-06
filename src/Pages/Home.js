@@ -11,13 +11,13 @@ const Home = () => {
       </div>
 
       <video
-        className={`absolute w-screen h-screen -z-10 object-cover transition-all duration-500 ${
+        className={`absolute w-screen h-screen -z-10 object-cover transition-all duration-500 bg-black ${
           videoLoaded ? "opacity-100" : "opacity-0"
         }`}
         autoPlay
         loop
         muted
-        onLoad={() => setVideoLoaded(true)}
+        onLoadedData={() => setVideoLoaded(true)}
       >
         <source src="/videos/sea1.mp4" type="video/mp4" />
       </video>
