@@ -50,7 +50,7 @@ const Navbar = ({ type, setOpen, currentUser, setOpenCart, cartLength }) => {
           <a
             href="/products/beaded-bags"
             className={`p-2 hover:text-yellow-400 transition-all duration-300 cursor-pointer
-            ${type === "beaded-bags" ? "text-yellow-500" : ""}
+            ${type === "Beaded Bags" ? "text-yellow-500" : ""}
             `}
           >
             Beaded Bags
@@ -60,7 +60,7 @@ const Navbar = ({ type, setOpen, currentUser, setOpenCart, cartLength }) => {
           <a
             href="/products/necklaces"
             className={`p-2 hover:text-yellow-400 transition-all duration-300 cursor-pointer
-            ${type === "necklaces" ? "text-yellow-500" : ""}
+            ${type === "Necklaces" ? "text-yellow-500" : ""}
             `}
           >
             Necklaces

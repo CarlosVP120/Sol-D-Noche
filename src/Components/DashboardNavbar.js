@@ -117,6 +117,7 @@ export default function WithAction({ showingComponent, setShowingComponent }) {
               </MenuList>
             </Menu>
           </Flex>
+          <Toaster />
         </Flex>
 
         {isOpen ? (
