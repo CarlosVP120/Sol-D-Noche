@@ -10,7 +10,6 @@ import {
   Image,
   Stack,
   Text,
-  useDisclosure,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -27,14 +26,8 @@ import {
   NumberInput,
   NumberInputField,
 } from "@chakra-ui/react";
-import { useState, useRef } from "react";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDocs,
-  updateDoc,
-} from "firebase/firestore";
+import { useState } from "react";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../Firebase/firebase-config";
 import UploadImages from "./UploadImages";
 

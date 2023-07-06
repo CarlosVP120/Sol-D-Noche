@@ -5,18 +5,14 @@ import {
   useToast,
   NumberInput,
   NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
   Textarea,
   Grid,
   Flex,
   keyframes,
   Heading,
   Select,
-  Text,
 } from "@chakra-ui/react";
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../Firebase/firebase-config";
 import ResizeTextarea from "react-textarea-autosize";

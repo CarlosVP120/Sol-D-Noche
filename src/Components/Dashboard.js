@@ -1,42 +1,6 @@
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  TableContainer,
-  Image,
-  SimpleGrid,
-  Card,
-  CardHeader,
-  CardBody,
-  Heading,
-  Text,
-  CardFooter,
-  Stack,
-  Divider,
-  ButtonGroup,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  ModalFooter,
-  useDisclosure,
-  Flex,
-  keyframes,
-} from "@chakra-ui/react";
-import { Box, Button, useToast } from "@chakra-ui/react";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDocs,
-  updateDoc,
-} from "firebase/firestore";
+import { Heading, Text, Flex, keyframes } from "@chakra-ui/react";
+//import { useToast } from "@chakra-ui/react";
+import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../Firebase/firebase-config";
 import ProductDashboardCard from "./ProductDashboardCard";
@@ -45,7 +9,7 @@ import UseAuth from "../custom-hooks/UseAuth";
 const Home = () => {
   const currentUser = UseAuth();
   const [products, setProducts] = useState([]);
-  const toast = useToast();
+  // const toast = useToast();
 
   // * TO get the data from database
   const getData = async () => {

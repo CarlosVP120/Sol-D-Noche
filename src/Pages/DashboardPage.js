@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UseAuth from "../custom-hooks/UseAuth";
-import { collection, onSnapshot } from "@firebase/firestore";
-import { auth, db, provider } from "../Firebase/firebase-config";
+import { auth } from "../Firebase/firebase-config";
 import Dashboard from "../Components/Dashboard";
 import DashboardNavbar from "../Components/DashboardNavbar";
 import NewProduct from "../Components/NewProduct";
@@ -15,7 +13,7 @@ const DashboardPage = () => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         auth.currentUser = user;
-        if (auth.currentUser.email == "admin@admin.com") {
+        if (auth.currentUser.email === "admin@admin.com") {
           setLoading(false);
         } else {
           window.location.href = "/";

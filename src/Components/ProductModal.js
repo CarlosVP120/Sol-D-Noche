@@ -1,13 +1,5 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import {
-  signInWithPopup,
-  createUserWithEmailAndPassword,
-  signOut,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { auth, db, provider } from "../Firebase/firebase-config";
-import { doc, setDoc } from "firebase/firestore";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function Example({

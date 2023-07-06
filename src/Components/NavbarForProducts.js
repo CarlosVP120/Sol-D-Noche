@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import {
-  signInWithPopup,
-  createUserWithEmailAndPassword,
+
   signOut,
-  signInWithEmailAndPassword,
+
 } from "firebase/auth";
-import { auth, db, provider } from "../Firebase/firebase-config";
+import { auth } from "../Firebase/firebase-config";
 import toast, { Toaster } from "react-hot-toast";
 
 const Navbar = ({ type, setOpen, currentUser, setOpenCart, cartLength }) => {

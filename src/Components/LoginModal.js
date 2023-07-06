@@ -1,14 +1,7 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import {
-  signInWithPopup,
-  createUserWithEmailAndPassword,
-  signOut,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { auth, db, provider } from "../Firebase/firebase-config";
-import { doc, setDoc } from "firebase/firestore";
-import { set } from "lodash";
+import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
+import { auth, provider } from "../Firebase/firebase-config";
 
 export default function Example({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
@@ -27,13 +20,13 @@ export default function Example({ open, setOpen }) {
         return;
       }
 
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      ).then((userCredential) => {
-        SignIn();
-      });
+      // const userCredential = await createUserWithEmailAndPassword(
+      //   auth,
+      //   email,
+      //   password
+      // ).then((userCredential) => {
+      //   SignIn();
+      // });
 
       setEmail("");
       setPassword("");

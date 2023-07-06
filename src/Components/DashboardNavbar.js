@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import {
   Box,
   Flex,
@@ -10,13 +9,11 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuDivider,
   useDisclosure,
   useColorModeValue,
   useColorMode,
   Stack,
   Text,
-  Heading,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -29,10 +26,8 @@ import UseAuth from "../custom-hooks/UseAuth";
 
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { auth, db, provider } from "../Firebase/firebase-config";
+import { auth } from "../Firebase/firebase-config";
 import toast, { Toaster } from "react-hot-toast";
-
-const Links = ["Dashboard", "Projects", "Team"];
 
 const logout = async () => {
   try {
