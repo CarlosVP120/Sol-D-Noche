@@ -3,6 +3,7 @@ import ProductModal from "./ProductModal";
 
 const ProductCard = ({ product, cartItems, setCartItems }) => {
   const [open, setOpen] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <>
@@ -20,7 +21,10 @@ const ProductCard = ({ product, cartItems, setCartItems }) => {
         <img
           src={product.images[0]}
           alt={product.name}
-          className="w-full h-[45vh] sm:h-[35vh] lg:h-[40vh] xl:h-[45] object-cover rounded-lg"
+          className={`w-full h-[45vh] sm:h-[35vh] lg:h-[40vh] xl:h-[45] object-cover rounded-lg transition-all duration-300 ${
+            imageLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setImageLoaded(true)}
         />
         <div className="flex flex-row mt-1 justify-between items-center">
           <h2 className="text-gray-600">{product.name}</h2>

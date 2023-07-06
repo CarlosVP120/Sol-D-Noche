@@ -13,6 +13,8 @@ export default function Example({
 
   const [currentImage, setCurrentImage] = useState(product.images[0]);
 
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   const addToCart = (product) => {
     if (!cartItems.find((item) => item.id === product.id)) {
       setCartItems((prevItems) => [...prevItems, product]);
@@ -76,9 +78,12 @@ export default function Example({
                 <div className="bg-white px-4 py-5 flex flex-col w-full sm:flex-row">
                   <div className="flex flex-col sm:w-1/2 justify-center ">
                     <img
-                      className="h-[30vh] w-2/3 sm:w-full mt-8 sm:mt-0 sm:h-[60vh] object-cover rounded-lg mx-auto"
+                      className={`h-[30vh] w-2/3 sm:w-full mt-8 sm:mt-0 sm:h-[60vh] object-cover rounded-lg mx-auto transition-all duration-300 ${
+                        imageLoaded ? "opacity-100" : "opacity-0"
+                      }`}
                       src={currentImage}
                       alt={product.name}
+                      onLoad={() => setImageLoaded(true)}
                     />
                     {/* Images to select */}
                     <div className="flex justify-center items-center space-x-2 mt-3">

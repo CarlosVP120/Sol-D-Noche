@@ -4,6 +4,8 @@ const Products = () => {
   const [purseSelected, setPurseSelected] = React.useState(false);
   const [necklaceSelected, setNecklaceSelected] = React.useState(false);
   const [middleLineAnimated, setMiddleLineAnimated] = React.useState(false);
+  const [leftImageLoaded, setLeftImageLoaded] = React.useState(false);
+  const [rightImageLoaded, setRightImageLoaded] = React.useState(false);
 
   return (
     <div className="w-screen h-screen flex flex-col sm:flex-row overflow-hidden">
@@ -12,7 +14,10 @@ const Products = () => {
         <img
           src="images/Bolsa-Amarilla.png"
           alt="Bolsa Amarilla"
-          className="h-full w-full object-cover"
+          className={`h-full w-full object-cover transition-all duration-300 ${
+            leftImageLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setLeftImageLoaded(true)}
         />
 
         {/* Black Overlay and Text */}
@@ -37,7 +42,10 @@ const Products = () => {
         <img
           src="images/Collar.png"
           alt="Bolsa Amarilla"
-          className="h-full w-full object-cover"
+          className={`h-full w-full object-cover transition-all duration-300 ${
+            rightImageLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setRightImageLoaded(true)}
         />
 
         {/* Black Overlay and Text */}
