@@ -49,20 +49,6 @@ const UpdateProduct = async (StripeID) => {
 
     // * optional
     console.log(`Product ${product.id} updated successfully`);
-
-    const mailData = {
-      from: "soldnocheweb@gmail.com", // sender address
-      to: "diegopartidaromero@gmail.com", // list of receivers
-      subject: "Nueva compra recibida!",
-      text: "Info",
-      // html: `<b>Hey there! </b>
-      //          <br> This is our first message sent with Nodemailer<br/>`,
-    };
-
-    transporter.sendMail(mailData, function (err, info) {
-      if (err) console.log(err);
-      else console.log(info);
-    });
   } catch (error) {
     console.log("error: ", error);
   }
@@ -121,10 +107,100 @@ app.post("/webhook", async (req, res) => {
 
       if (session.payment_status === "paid") {
         console.log("Payment completed successfully");
-        // Do it for all the products in the cart
-        // await UpdateProduct(session.line_items.data[0].price.id);
+
         session.line_items.data.forEach((item) => {
           UpdateProduct(item.price.id);
+
+          // Send an email to the owner of the store
+          const mailData = {
+            from: '"Sol D Noche" <soldnocheweb@gmail.com>', // sender address
+            to: "soldnocheweb@gmail.com", // list of receivers
+            subject: "Nueva compra recibida!",
+            html: `
+            <h1>¡Hola! Se ha realizado una nueva compra en tu tienda en línea.</h1>
+            <p><b>Se ha realizado una nueva compra en la tienda en línea.</p>
+            <p><b>El producto comprado es:</b> ${item.description}</p>
+            <p><b>El precio del producto es:</b> $${
+              item.price.unit_amount / 100
+            }</p>
+            <p><b>La cantidad comprada es:</b> ${item.quantity}</p>
+            <p><b>El correo del comprador es:</b> ${
+              session.customer_details.email
+            }</p>
+            <p><b>El nombre del comprador es:</b> ${
+              session.customer_details.name
+            }</p>
+            <p><b>El teléfono del comprador es:</b> ${
+              session.customer_details.phone
+            }</p>
+            <p><b>La dirección del comprador es:</b> ${
+              session.customer_details.address.line1
+            }, ${session.customer_details.address.city}, ${
+              session.customer_details.address.state
+            }, ${session.customer_details.address.country}</p>
+            <p><b>El código postal del comprador es:</b> ${
+              session.customer_details.address.postal_code
+            }</p>
+            
+            <hr style="border: 1px solid #000000; width: 100%; margin: 20px 0px;"/>
+
+            <h3>Favor de revisar la información de la compra en Stripe</h3>
+            <a href="https://dashboard.stripe.com/test/payments/${
+              session.payment_intent
+            }">Stripe</a>
+            `,
+          };
+
+          const customerMailData = {
+            from: '"Sol D Noche" <soldnocheweb@gmail.com>', // sender address
+            to: session.customer_details.email, // list of receivers
+            subject: "Thanks for your purchase!",
+            html: `
+            <h1>¡Thanks for your purchase in Sol D Noche!</h1>
+            <p><b>The product you bought is:</b> ${item.description}</p>
+            <p><b>The charged amount is:</b> $${
+              item.price.unit_amount / 100
+            }</p>
+            <p><b>The quantity bought is:</b> ${item.quantity}</p>
+            <p><b>The payment status is:</b> ${session.payment_status}</p>
+            <p><b>The payment method is:</b> ${
+              session.payment_method_types[0]
+            }</p>
+
+            <hr style="border: 1px solid #000000; width: 100%; margin: 20px 0px;"/>
+
+            <h3>This product will be shipped to:</h3>
+            <p><b>Name:</b> ${session.customer_details.name}</p>
+            <p><b>Address:</b> ${session.customer_details.address.line1}, ${
+              session.customer_details.address.city
+            }, ${session.customer_details.address.state}, ${
+              session.customer_details.address.country
+            }</p>
+            <p><b>Postal Code:</b> ${
+              session.customer_details.address.postal_code
+            }</p>
+            <p><b>Phone:</b> ${session.customer_details.phone}</p>
+
+            <hr style="border: 1px solid #000000; width: 100%; margin: 20px 0px;"/>
+
+            <h4> For more information, please contact us at <a href="mailto:soldnocheweb@gmail.com" target="_blank">soldnocheweb@gmail.com</a></h4>
+            `,
+          };
+
+          // Send both emails
+          transporter.sendMail(mailData, (error, info) => {
+            if (error) {
+              return console.log(error);
+            }
+            console.log("Message sent: %s", info.messageId);
+          });
+
+          transporter.sendMail(customerMailData, (error, info) => {
+            if (error) {
+              return console.log(error);
+            }
+            console.log("Message sent: %s", info.messageId);
+          });
         });
       }
 
@@ -151,3 +227,14 @@ app.listen(8080, () => console.log("listening on port 8080"));
 
 // // Get the Payment Status
 // console.log(session.payment_status);
+
+// // Get the email of the user
+// console.log(session.customer_details.email);
+
+// <p>El ID de la compra es: ${session.id}</p>
+// <p>El ID de la orden es: ${session.payment_intent}</p>
+// <p>El ID de la transacción es: ${session.payment_intent}</p>
+// <p>El ID de la tarjeta es: ${session.payment_intent}</p>
+// <p>El ID del pago es: ${session.payment_intent}</p>
+// <p>El ID del cliente es: ${session.payment_intent}</p>
+// <p>El ID del método de pago es: ${session.payment_intent}</p>
