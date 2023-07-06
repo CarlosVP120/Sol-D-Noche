@@ -83,7 +83,7 @@ app.post("/checkout", async (req, res) => {
     line_items: lineItems,
     mode: "payment",
     success_url: "https://sol-d-noche.vercel.app/success",
-    cancel_url: "https://sol-d-noche.vercel.app/cancel",
+    cancel_url: "https://sol-d-noche.vercel.app/products/all",
     shipping_address_collection: {
       allowed_countries: ["MX"],
     },
