@@ -8,7 +8,7 @@ const Products = () => {
   return (
     <div className="w-screen h-screen flex flex-col sm:flex-row overflow-hidden">
       {/* Left Container */}
-      <div className="h-[50vh] sm:w-1/2 sm:h-full flex justify-center items-center">
+      <div className="h-1/2 sm:w-1/2 sm:h-full flex justify-center items-center">
         <img
           src="images/Bolsa-Amarilla.png"
           alt="Bolsa Amarilla"
@@ -18,7 +18,7 @@ const Products = () => {
         {/* Black Overlay and Text */}
         <a
           href="/products/beaded-bags"
-          className={`opacity-100 sm:opacity-0 absolute h-[50vh] sm:w-1/2 sm:h-full flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 hover:opacity-100 transition-all duration-300 ${
+          className={`opacity-100 sm:opacity-0 absolute h-1/2 sm:w-1/2 sm:h-full flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 hover:opacity-100 transition-all duration-300 ${
             purseSelected ? "opacity-100 !important" : ""
           }`}
         >
@@ -33,7 +33,7 @@ const Products = () => {
       </div>
 
       {/* Right Container */}
-      <div className="h-[50vh] sm:w-1/2 sm:h-full flex justify-center items-center">
+      <div className="h-1/2 sm:w-1/2 sm:h-full flex justify-center items-center">
         <img
           src="images/Collar.png"
           alt="Bolsa Amarilla"
@@ -43,7 +43,7 @@ const Products = () => {
         {/* Black Overlay and Text */}
         <a
           href="/products/necklaces"
-          className={`opacity-100 sm:opacity-0 absolute h-[50vh] sm:w-1/2 sm:h-full flex flex-col justify-center items-center text-white bg-black bg-opacity-50  hover:opacity-100 transition-all duration-300 ${
+          className={`opacity-100 sm:opacity-0 absolute h-1/2 sm:w-1/2 sm:h-full flex flex-col justify-center items-center text-white bg-black bg-opacity-50  hover:opacity-100 transition-all duration-300 ${
             necklaceSelected ? "opacity-100 !important" : ""
           }`}
         >
