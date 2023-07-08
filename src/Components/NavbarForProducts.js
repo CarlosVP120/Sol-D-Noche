@@ -34,15 +34,15 @@ const Navbar = ({ type, setOpen, currentUser, setOpenCart, cartLength }) => {
       }`}
     >
       {/* Logo */}
-      <a className="flex items-center gap-4" href="/">
-        <div className="w-10 h-10 rounded-full">
+      <a className="flex items-center gap-4 flex-col sm:flex-row" href="/">
+        <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full">
           <img src="/images/logo2.png" alt="logo" className="w-full h-full" />
         </div>
         {/* <div className="text-2xl font-bold text-stone-500">Sol D Noche</div> */}
         <img
           src="/images/sol-d-noche-blue.png"
           alt="logo"
-          className="w-32 sm:w-40 lg:w-48"
+          className="w-20 sm:w-40 lg:w-48"
         />
       </a>
 
