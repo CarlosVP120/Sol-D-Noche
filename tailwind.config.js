@@ -3,6 +3,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        Aboreto: ["Aboreto"],
+        Montserrat: ["Montserrat"],
+        PoiretOne: ["Poiret One"],
+      },
       animation: {
         tilt: "tilt 10s infinite linear",
         appear: "appear 0.5s ease-in-out",

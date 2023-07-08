@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-
-  signOut,
-
-} from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { auth } from "../Firebase/firebase-config";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -25,7 +21,7 @@ const Navbar = ({ type, setOpen, currentUser, setOpenCart, cartLength }) => {
   const logout = async () => {
     try {
       await signOut(auth);
-      toast.success("Sesión cerrada");
+      toast.success("Logged out");
     } catch (error) {
       console.log("error: ", error);
     }
@@ -39,8 +35,15 @@ const Navbar = ({ type, setOpen, currentUser, setOpenCart, cartLength }) => {
     >
       {/* Logo */}
       <a className="flex items-center gap-4" href="/">
-        <div className="w-6 h-6 bg-yellow-500 rounded-full"></div>
-        <div className="text-2xl font-bold text-stone-500">Sol D Noche</div>
+        <div className="w-10 h-10 rounded-full">
+          <img src="/images/logo2.png" alt="logo" className="w-full h-full" />
+        </div>
+        {/* <div className="text-2xl font-bold text-stone-500">Sol D Noche</div> */}
+        <img
+          src="/images/sol-d-noche-blue.png"
+          alt="logo"
+          className="w-32 sm:w-40 lg:w-48"
+        />
       </a>
 
       {/* Links in the center */}

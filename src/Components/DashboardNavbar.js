@@ -3,7 +3,6 @@ import {
   Flex,
   Avatar,
   HStack,
-  IconButton,
   Button,
   Menu,
   MenuButton,
@@ -15,13 +14,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  AddIcon,
-  MoonIcon,
-  SunIcon,
-} from "@chakra-ui/icons";
+import { AddIcon } from "@chakra-ui/icons";
 import UseAuth from "../custom-hooks/UseAuth";
 
 import { Link } from "react-router-dom";
@@ -32,7 +25,7 @@ import toast, { Toaster } from "react-hot-toast";
 const logout = async () => {
   try {
     await signOut(auth);
-    toast.success("Sesión cerrada");
+    toast.success("Logged out");
   } catch (error) {
     console.log("error: ", error);
   }

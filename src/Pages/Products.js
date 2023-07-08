@@ -27,7 +27,7 @@ const Products = () => {
             purseSelected ? "opacity-100 !important" : ""
           }`}
         >
-          <h1 className=" text-xl sm:text-5xl lg:text-6xl font-bold mb-4">
+          <h1 className=" text-xl sm:text-5xl lg:text-6xl font-bold mb-4 font-[Aboreto]">
             Beaded Bags
           </h1>
           <p className="text-base sm:text-lg lg:text-xl text-white w-4/5 sm:w-3/5 md:w-1/2 text-center">
@@ -55,7 +55,7 @@ const Products = () => {
             necklaceSelected ? "opacity-100 !important" : ""
           }`}
         >
-          <h1 className="text-xl sm:text-5xl lg:text-6xl font-bold mb-4 text-center">
+          <h1 className="text-xl sm:text-5xl lg:text-6xl font-bold mb-4 text-center font-[Aboreto]">
             Necklaces
           </h1>
           <p className="text-base sm:text-lg lg:text-xl text-white w-4/5 sm:w-3/5 md:w-1/2 text-center">
