@@ -20,7 +20,7 @@ const Home = () => {
         playsInline
         onLoadedData={() => setVideoLoaded(true)}
       >
-        <source src="/videos/sea1.mp4" type="video/mp4" />
+        <source src="/videos/sea3.mp4" type="video/mp4" />
       </video>
       <div className="absolute w-screen h-screen bg-black bg-opacity-30 flex flex-col justify-center items-center z-20">
         {/* <h1 className="text-4xl sm:text-6xl md:text-8xl  text-white mb-4 font-[Aboreto]">
