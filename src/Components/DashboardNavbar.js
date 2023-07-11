@@ -49,9 +49,14 @@ export default function WithAction({ showingComponent, setShowingComponent }) {
           /> */}
 
           <HStack alignItems={"center"}>
-            <a className="font-bold" href="/">
+            {/* <a className="font-bold" href="/">
               Sol <span className="text-yellow-500">D</span> Noche
-            </a>
+            </a> */}
+            <img
+              src="/images/sol-d-noche-blue.png"
+              alt="logo"
+              className="w-20 sm:w-40 lg:w-48"
+            />
             <HStack
               as={"nav"}
               spacing={4}
