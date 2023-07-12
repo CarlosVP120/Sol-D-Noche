@@ -5,7 +5,7 @@ const Home = () => {
   const [videoLoaded, setVideoLoaded] = React.useState(false);
 
   return (
-    <div className="h-screen relative overflow-hidden bg-black" id="home">
+    <div className="h-screen relative overflow-hidden bg-black " id="home">
       <div className="absolute w-screen z-30">
         <Navbar />
       </div>

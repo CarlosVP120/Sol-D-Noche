@@ -3,7 +3,10 @@ import Gallery from "../Components/Gallery";
 
 const About = () => {
   return (
-    <div className="flex flex-col items-center justify-center my-12" id="about">
+    <div
+      className="bg-white flex flex-col items-center justify-center py-12"
+      id="about"
+    >
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-yellow-500 mb-12 font-[Aboreto]">
         About Us
       </h1>

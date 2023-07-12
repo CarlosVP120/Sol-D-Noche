@@ -6,35 +6,35 @@ import "slick-carousel/slick/slick-theme.css";
 const Gallery = () => {
   const images = [
     {
-      src: "/images/image1.png",
+      src: "/images/image1.webp",
       alt: "Gallery",
     },
     {
-      src: "/images/image2.png",
+      src: "/images/image2.webp",
       alt: "Gallery",
     },
     {
-      src: "/images/image3.png",
+      src: "/images/image3.webp",
       alt: "Gallery",
     },
     {
-      src: "/images/image4.png",
+      src: "/images/image4.webp",
       alt: "Gallery",
     },
     {
-      src: "/images/image5.png",
+      src: "/images/image5.webp",
       alt: "Gallery",
     },
     {
-      src: "/images/image6.png",
+      src: "/images/image6.webp",
       alt: "Gallery",
     },
     {
-      src: "/images/image7.png",
+      src: "/images/image7.webp",
       alt: "Gallery",
     },
     {
-      src: "/images/image8.png",
+      src: "/images/image8.webp",
       alt: "Gallery",
     },
   ];
