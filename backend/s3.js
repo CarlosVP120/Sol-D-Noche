@@ -24,7 +24,7 @@ const randomBytesAsync = promisify(randomBytes);
 
 export async function generateUploadURL() {
   const rawBytes = await randomBytesAsync(16);
-  const imageName = rawBytes.toString("hex") + ".png";
+  const imageName = rawBytes.toString("hex") + ".webp";
 
   const params = {
     Bucket: bucketName,
