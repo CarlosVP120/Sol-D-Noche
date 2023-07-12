@@ -65,15 +65,15 @@ const AddProduct = () => {
     console.log(images);
   };
 
-  const onDragEnd = (result) => {
-    if (!result.destination) return;
+  // const onDragEnd = (result) => {
+  //   if (!result.destination) return;
 
-    const items = Array.from(product.images);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
+  //   const items = Array.from(product.images);
+  //   const [reorderedItem] = items.splice(result.source.index, 1);
+  //   items.splice(result.destination.index, 0, reorderedItem);
 
-    setProduct((prev) => ({ ...prev, images: items }));
-  };
+  //   setProduct((prev) => ({ ...prev, images: items }));
+  // };
 
   const appear = keyframes`
       from {
@@ -88,13 +88,6 @@ const AddProduct = () => {
 
   const format = (val) => `$` + val;
   const parse = (val) => val.replace(/^\$/, "");
-
-  // Get the information of the #imageInput
-  // useEffect(() => {
-  //   const imageInput = document.querySelector("#imageInput");
-  //   const file = imageInput.files[0];
-  //   console.log(file);
-  // }, []);
 
   return (
     <Box pb={10} animation={appearAnimation}>
@@ -234,37 +227,6 @@ const AddProduct = () => {
         <Button onClick={AddProduct} colorScheme="teal">
           Add Product
         </Button>
-
-        {/* For that shows the images */}
-        {/* {product.imagenes.length > 0 && (
-            <Box mt={5}>
-              <Heading size="md" mb={2}>
-                Imágenes:
-              </Heading>
-              <Grid templateColumns="repeat(3, 1fr)" gap={6}>
-                {product.imagenes.map((image, index) => (
-                  <Box key={index}>
-                    <img
-                      src={image}
-                      alt="preview"
-                      style={{ width: "100%", height: "100%" }}
-                    />
-  
-                    <Text>{image}</Text>
-                  </Box>
-                ))}
-              </Grid>
-            </Box>
-          )} */}
-
-        {/* TEMP
-          <input
-            type="file"
-            name="file"
-            accept="image/*"
-            multiple
-            id="imageInput"
-          /> */}
       </Box>
     </Box>
   );

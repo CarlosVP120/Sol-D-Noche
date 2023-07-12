@@ -52,35 +52,6 @@ function ContactForm() {
 
   return (
     <div className="" id="contact">
-      {/* <h1 className="text-2xl font-bold text-slate-600 flex justify-center">
-        Send me a message
-      </h1> */}
-      {/* <div className="flex w-1/2 sm:w-full sm:flex justify-center mt-8 gap-12 mx-auto">
-        <div>
-          <a
-            href="https://www.instagram.com/diegopartida22/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-800 hover:text-orange-500 flex items-center  hover:-translate-y-1 transition duration-300 ease-in-out "
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-14 w-14 sm:h-16 sm:w-16"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-              <path d="M16 11.37a4 4 0 1 1 -3.83 -3.83" />
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-            </svg>
-          </a>
-        </div>
-      </div> */}
-
       <div className="max-w-md mx-auto mt-0">
         <h2 className="text-2xl font-bold text-gray-600 flex justify-center mt-8">
           Send me a message!

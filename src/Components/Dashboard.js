@@ -56,10 +56,9 @@ const Home = () => {
         spacing={20}
         gap={10}
         // templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
-        px={10}
       >
         {/* CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-8 w-full px-3 sm:px-10">
           {products.length > 0 ? (
             products.map((product, index) => (
               <ProductDashboardCard product={product} key={index} />

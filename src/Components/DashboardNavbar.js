@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import UseAuth from "../custom-hooks/UseAuth";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
@@ -34,37 +35,20 @@ const logout = async () => {
 export default function WithAction({ showingComponent, setShowingComponent }) {
   const currentUser = UseAuth();
   const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen } = useDisclosure();
 
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={10}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          {/* <IconButton
-            size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={"Open Menu"}
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-          /> */}
-
-          <HStack alignItems={"center"}>
-            {/* <a className="font-bold" href="/">
-              Sol <span className="text-yellow-500">D</span> Noche
-            </a> */}
+          <HStack alignItems={"center"} gap={4}>
             <img
               src="/images/sol-d-noche-blue.png"
               alt="logo"
-              className="w-20 sm:w-40 lg:w-48"
+              className="w-24 sm:w-40"
             />
-            <HStack
-              as={"nav"}
-              spacing={4}
-              display={{ base: "none", md: "flex" }}
-            >
-              {/* {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))} */}
+
+            <HStack as={"nav"} spacing={4}>
               <Button onClick={() => setShowingComponent("Dashboard")}>
                 Home
               </Button>
@@ -75,19 +59,24 @@ export default function WithAction({ showingComponent, setShowingComponent }) {
             <div className="hidden md:block">
               <Text>{currentUser ? currentUser?.email.split("@")[0] : ""}</Text>
             </div>
-            {/* <Button onClick={toggleColorMode}>
+            <Button
+              onClick={toggleColorMode}
+              display={{ base: "none", sm: "flex" }}
+            >
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-            </Button> */}
+            </Button>
 
             <Button
               variant={"solid"}
               colorScheme={"teal"}
-              leftIcon={<AddIcon />}
               onClick={() => {
                 setShowingComponent("NewProduct");
               }}
             >
-              New Product
+              <div className="sm:mr-2 flex justify-center items-center">
+                <AddIcon />
+              </div>
+              <span className="hidden sm:block self-center">New Product</span>
             </Button>
 
             <Menu>
@@ -108,10 +97,7 @@ export default function WithAction({ showingComponent, setShowingComponent }) {
                 </div>
               </MenuButton>
               <MenuList>
-                <MenuItem onClick={logout}>Log out</MenuItem>
-                {/* <MenuItem>Link 2</MenuItem>
-                <MenuDivider />
-                <MenuItem>Link 3</MenuItem> */}
+                <MenuItem onClick={logout}>Log Out</MenuItem>
               </MenuList>
             </Menu>
           </Flex>
@@ -121,9 +107,6 @@ export default function WithAction({ showingComponent, setShowingComponent }) {
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
-              {/* {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))} */}
               <Link to="/">Inicio</Link>
             </Stack>
           </Box>

@@ -97,7 +97,7 @@ const PropertyCard = ({ product }) => {
           animation={appearAnimation}
           boxShadow="2xl"
           h={"100%"}
-          minW={"sm"}
+          className="w-full sm:w-[26rem]"
         >
           <CardBody>
             <Image

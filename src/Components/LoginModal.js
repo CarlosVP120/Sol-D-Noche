@@ -1,6 +1,10 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 import { auth, provider } from "../Firebase/firebase-config";
 
 export default function Example({ open, setOpen }) {
@@ -20,13 +24,9 @@ export default function Example({ open, setOpen }) {
         return;
       }
 
-      // const userCredential = await createUserWithEmailAndPassword(
-      //   auth,
-      //   email,
-      //   password
-      // ).then((userCredential) => {
-      //   SignIn();
-      // });
+      await createUserWithEmailAndPassword(auth, email, password).then(() => {
+        SignIn();
+      });
 
       setEmail("");
       setPassword("");
@@ -39,11 +39,7 @@ export default function Example({ open, setOpen }) {
   const SignIn = async () => {
     try {
       console.log("email: ", email);
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      await signInWithEmailAndPassword(auth, email, password);
 
       setEmail("");
       setPassword("");
@@ -55,11 +51,7 @@ export default function Example({ open, setOpen }) {
 
   const signInWithGoogle = async () => {
     try {
-      const userCredential = await signInWithPopup(auth, provider);
-      const user = userCredential.user;
-      const name = user.displayName;
-      const email = user.email;
-      const profilePic = user.photoURL;
+      await signInWithPopup(auth, provider);
       setOpen(false);
     } catch (error) {
       console.log("error: ", error);

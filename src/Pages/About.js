@@ -15,11 +15,6 @@ const About = () => {
         timeless elegance. Explore our collection and embrace the artistry of
         handmade creations.
       </p>
-      {/* <div className="flex justify-center mt-4 gap-8">
-        <img src="images/image1.png" alt="About" className="w-1/5 rounded-md" />
-        <img src="images/image2.png" alt="About" className="w-1/5 rounded-md" />
-        <img src="images/image3.png" alt="About" className="w-1/5 rounded-md" />
-      </div> */}
       <Gallery />
     </div>
   );
