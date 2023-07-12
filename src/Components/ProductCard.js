@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProductModal from "./ProductModal";
 
-const ProductCard = ({ product, cartItems, setCartItems }) => {
+const ProductCard = ({ product, cartItems, setCartItems, currentUser }) => {
   const [open, setOpen] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -13,6 +13,7 @@ const ProductCard = ({ product, cartItems, setCartItems }) => {
         product={product}
         cartItems={cartItems}
         setCartItems={setCartItems}
+        currentUser={currentUser}
       />
       <div
         className="rounded-lg m-4 shadow-md p-2 hover:shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer"

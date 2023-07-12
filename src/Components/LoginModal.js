@@ -131,7 +131,7 @@ export default function Example({ open, setOpen }) {
                                 type="email"
                                 autoComplete="email"
                                 required
-                                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                                className="bg-white appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
                                 placeholder="Email address"
                                 onChange={(e) => setEmail(e.target.value)}
                                 value={email}
@@ -147,7 +147,7 @@ export default function Example({ open, setOpen }) {
                                 type="password"
                                 autoComplete="current-password"
                                 required
-                                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                                className="bg-white appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm rounded-b-lg"
                                 placeholder="Password"
                                 onChange={(e) => setPassword(e.target.value)}
                                 value={password}
@@ -198,7 +198,7 @@ export default function Example({ open, setOpen }) {
                     </button>
                   )}
 
-                  <h1 className="my-2">Or</h1>
+                  <h1 className="my-2 text-black">Or</h1>
                   <div className="flex flex-col justify-center items-center w-full">
                     <div className="px-6 sm:px-0 max-w-sm">
                       <button

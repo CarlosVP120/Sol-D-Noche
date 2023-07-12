@@ -9,6 +9,7 @@ export default function Example({
   product,
   cartItems,
   setCartItems,
+  currentUser,
 }) {
   const cancelButtonRef = useRef(null);
 
@@ -230,7 +231,7 @@ export default function Example({
                       {/* Buttons to buy, add to cart, and share */}
 
                       <div className="flex flex-row justify-center gap-2 sm:gap-5 items-center mt-4 sm:mt-0">
-                        {product.availability !== "Sold" && (
+                        {product.availability !== "Sold" && currentUser ? (
                           <>
                             <button
                               onClick={checkout}
@@ -276,6 +277,30 @@ export default function Example({
                               Add to cart
                             </button>
                           </>
+                        ) : (
+                          // Tell the user to login
+                          <button
+                            className="w-full flex justify-center items-center gap-1 bg-blue-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-stone-600 transition-all duration-300"
+                            onClick={() => {
+                              setOpen(false);
+                            }}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="w-6 h-6"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+                              />
+                            </svg>
+                            Login to buy
+                          </button>
                         )}
                       </div>
                     </div>

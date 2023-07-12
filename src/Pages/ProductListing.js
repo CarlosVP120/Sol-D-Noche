@@ -79,6 +79,7 @@ const ProductListing = ({ type }) => {
               key={product.name}
               cartItems={cartItems}
               setCartItems={setCartItems}
+              currentUser={currentUser}
             />
           ))}
         </div>
