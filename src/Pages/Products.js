@@ -12,7 +12,7 @@ const Products = () => {
       {/* Left Container */}
       <div className="h-1/2 sm:w-1/2 sm:h-full flex justify-center items-center">
         <img
-          src="images/Bolsa-Amarilla.png"
+          src="images/Bolsa-Amarilla.webp"
           alt="Bolsa Amarilla"
           className={`h-full w-full object-cover transition-all duration-300 ${
             leftImageLoaded ? "opacity-100" : "opacity-0"
@@ -40,7 +40,7 @@ const Products = () => {
       {/* Right Container */}
       <div className="h-1/2 sm:w-1/2 sm:h-full flex justify-center items-center">
         <img
-          src="images/Collar.png"
+          src="images/Collar.webp"
           alt="Bolsa Amarilla"
           className={`h-full w-full object-cover transition-all duration-300 ${
             rightImageLoaded ? "opacity-100" : "opacity-0"
