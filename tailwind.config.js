@@ -3,6 +3,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        primary: "#88DBDF",
+        secondary: "#44797B",
+        tertiary: "#C09C83",
+      },
       fontFamily: {
         Aboreto: ["Aboreto"],
         Montserrat: ["Montserrat"],

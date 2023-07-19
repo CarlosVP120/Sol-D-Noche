@@ -94,10 +94,12 @@ app.post("/checkout", async (req, res) => {
 
 const getDay = () => {
   const date = new Date();
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-  return `${day}/${month}/${year}`;
+  const now = date.toLocaleString();
+  return now;
+  // const day = date.getDate();
+  // const month = date.getMonth() + 1;
+  // const year = date.getFullYear();
+  //return `${day}/${month}/${year}`;
 };
 
 const getHour = () => {
@@ -137,8 +139,7 @@ app.post("/webhook", async (req, res) => {
             <p><b>El precio del producto es:</b> $${
               item.price.unit_amount / 100
             }</p>
-            <p><b>Fecha:</b> ${getDay()} a las ${getHour()}</p>
-            <p><b>La cantidad comprada es:</b> ${item.quantity}</p>
+            <p><b>Fecha:</b> ${getDay()}</p>
             <p><b>El correo del comprador es:</b> ${
               session.customer_details.email
             }</p>
@@ -176,8 +177,7 @@ app.post("/webhook", async (req, res) => {
             <p><b>The charged amount is:</b> $${
               item.price.unit_amount / 100
             }</p>
-            <p><b>Date:</b> ${getDay()} at ${getHour()}</p>
-            <p><b>The quantity bought is:</b> ${item.quantity}</p>
+            <p><b>Date:</b> ${getDay()}</p>
             <p><b>The payment status is:</b> ${session.payment_status}</p>
             <p><b>The payment method is:</b> ${
               session.payment_method_types[0]
