@@ -42,15 +42,17 @@ export default function WithAction({ showingComponent, setShowingComponent }) {
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={10}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <HStack alignItems={"center"} gap={4}>
-            <img
-              src="/images/sol-d-noche-blue.png"
-              alt="logo"
-              className="w-24 sm:w-40"
-            />
+            <a href="/">
+              <img
+                src="/images/sol-d-noche-blue.png"
+                alt="logo"
+                className="w-24 sm:w-40"
+              />
+            </a>
 
             <HStack as={"nav"} spacing={4}>
               <Button onClick={() => setShowingComponent("Dashboard")}>
-                Home
+                Products
               </Button>
             </HStack>
           </HStack>
@@ -59,12 +61,12 @@ export default function WithAction({ showingComponent, setShowingComponent }) {
             <div className="hidden md:block">
               <Text>{currentUser ? currentUser?.email.split("@")[0] : ""}</Text>
             </div>
-            <Button
+            {/* <Button
               onClick={toggleColorMode}
               display={{ base: "none", sm: "flex" }}
             >
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-            </Button>
+            </Button> */}
 
             <Button
               variant={"solid"}

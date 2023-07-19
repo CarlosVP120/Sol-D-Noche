@@ -16,7 +16,7 @@ const ProductCard = ({ product, cartItems, setCartItems, currentUser }) => {
         currentUser={currentUser}
       />
       <div
-        className="rounded-lg m-4 shadow-md p-2 hover:shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer"
+        className="rounded-lg m-4 shadow-md p-2 hover:shadow-lg transition-all duration-300 cursor-pointer"
         onClick={() => setOpen(true)}
       >
         <img

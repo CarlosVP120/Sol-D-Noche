@@ -7,7 +7,7 @@ const About = () => {
       className="bg-white flex flex-col items-center justify-center py-12"
       id="about"
     >
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-yellow-500 mb-12 font-[Aboreto]">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-tertiary mb-12 font-[Aboreto]">
         About Us
       </h1>
       <p className="text-base sm:text-lg lg:text-xl text-gray-600 w-4/5 sm:w-3/5 md:w-1/2 text-center">

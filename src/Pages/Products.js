@@ -40,8 +40,8 @@ const Products = () => {
       {/* Right Container */}
       <div className="h-1/2 sm:w-1/2 sm:h-full flex justify-center items-center">
         <img
-          src="images/Collar.webp"
-          alt="Bolsa Amarilla"
+          src="images/image3.webp"
+          alt="Collar"
           className={`h-full w-full object-cover transition-all duration-300 ${
             rightImageLoaded ? "opacity-100" : "opacity-0"
           }`}
@@ -68,7 +68,7 @@ const Products = () => {
       {/*  Button in the center*/}
       <a
         href="/products/all"
-        className="absolute z-20 flex justify-center items-center left-1/2  top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white text-black text-xl font-bold w-24 h-24 rounded-full hover:bg-yellow-500 hover:text-white transition-all duration-300"
+        className="absolute z-20 flex justify-center items-center left-1/2  top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white text-black text-xl font-bold w-24 h-24 rounded-full hover:bg-tertiary hover:text-white transition-all duration-300"
         onMouseEnter={() => {
           setPurseSelected(true);
           setNecklaceSelected(true);
