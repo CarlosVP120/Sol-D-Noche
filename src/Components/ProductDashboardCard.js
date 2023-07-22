@@ -26,14 +26,17 @@ import {
   NumberInput,
   NumberInputField,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../Firebase/firebase-config";
 import UploadImages from "./UploadImages";
+import ChakraTagInput from "./ChakraTagInput.tsx";
 
 const PropertyCard = ({ product }) => {
   const toast = useToast();
   const [access, setAccess] = useState("");
+
+  const [hovering, setHovering] = useState(false);
 
   // // todo: update the product
   const UpdateProduct = async (productToUpdate) => {
@@ -89,10 +92,23 @@ const PropertyCard = ({ product }) => {
 
   const appearAnimation = `${appear} 0.3s ease-in-out`;
 
+  // When the user hovers the card, set the hovering state to true
+  const handleMouseEnter = () => {
+    setHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovering(false);
+  };
+
   return (
     <>
       {/* CARD */}
-      <div className="flex justify-center mb-8">
+      <div
+        className="product-card flex justify-center mb-8 "
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <Card
           animation={appearAnimation}
           boxShadow="2xl"
@@ -100,22 +116,36 @@ const PropertyCard = ({ product }) => {
           className="w-full sm:w-[26rem]"
         >
           <CardBody>
-            <Image
-              src={product.images[0]}
-              alt="Green double couch with wooden legs"
-              borderRadius="lg"
-              h={96}
-              w={"100%"}
+            <img
+              src={product.modelImage}
+              className={`object-cover animate-appear h-96 w-full rounded-lg transition-all duration-500 ease-in-out 
+                ${hovering ? "opacity-100 flex" : "opacity-0 hidden"}`}
+              alt="product"
             />
+
+            <img
+              src={product.images[0]}
+              className={`object-cover animate-appear h-96 w-full rounded-lg transition-all duration-500 ease-in-out
+                ${hovering ? "opacity-0 hidden" : "opacity-100 flex"}`}
+              alt="product"
+            />
+
             <Stack mt="6" spacing="3">
-              <Flex justify={"space-between"}>
+              <Flex justify={"space-between"} alignItems={"center"}>
                 <Heading size="md">
                   {product.name.length > 20
                     ? product.name.slice(0, 20) + "..."
                     : product.name}
                 </Heading>
-                <Heading size="md" color={"gray.500"}>
-                  {product.type}: {product.stoneType}
+                <Heading size="xs" color={"gray.200"}>
+                  {product.type}:{/* comma between each stone type element */}
+                  <span className="text-blue-300">
+                    {product.stoneType.map((stone, index) => {
+                      return index === product.stoneType.length - 1
+                        ? ` ${stone}`
+                        : ` ${stone},`;
+                    })}
+                  </span>
                 </Heading>
               </Flex>
               <Text h={"16"}>
@@ -221,17 +251,29 @@ const ModalEdit = ({ product, setAccess, UpdateProduct }) => {
   const [currentProduct, setCurrentProduct] = useState(product);
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [modelModalOpen, setModelModalOpen] = useState(false);
 
   const handleImageDrop = (images) => {
     setCurrentProduct((prev) => ({ ...prev, images: images }));
     console.log(images);
   };
 
+  const handleModelImageDrop = (images) => {
+    setCurrentProduct((prev) => ({ ...prev, modelImage: images[0] }));
+    console.log(images);
+  };
+
+  const handleTagsChange = useCallback((event, tags) => {
+    setCurrentProduct((prev) => ({ ...prev, stoneType: tags }));
+  }, []);
+
   return (
     <Modal isCentered isOpen={true} onClose={() => setAccess("")}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Edit: {currentProduct.name}</ModalHeader>
+        <ModalHeader>
+          Edit: <span className="text-blue-300">{currentProduct.name}</span>
+        </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           {/* Inputs to Edit */}
@@ -301,15 +343,18 @@ const ModalEdit = ({ product, setAccess, UpdateProduct }) => {
             <option value="Necklaces">Necklaces</option>
           </Select>
 
-          <label htmlFor="type">Stone Type</label>
-          <Input
-            id="stoneType"
-            placeholder="Product StoneType"
-            defaultValue={currentProduct.stoneType}
-            mb={2}
-            onChange={(e) => {
-              currentProduct.stoneType = e.target.value;
-            }}
+          <Flex gap={1} alignItems="center">
+            <label htmlFor="stoneType">Stone Type:</label>
+            <Text color="teal.400">
+              (Press "enter" to add or "delete" to delete)
+            </Text>
+          </Flex>
+
+          <ChakraTagInput
+            name="stoneType"
+            mt={1}
+            tags={currentProduct.stoneType}
+            onTagsChange={handleTagsChange}
           />
 
           <label htmlFor="stripeID">Stripe ID</label>
@@ -343,6 +388,31 @@ const ModalEdit = ({ product, setAccess, UpdateProduct }) => {
               setModalOpen={setModalOpen}
               product={currentProduct}
               setProduct={setCurrentProduct}
+              type={"images"}
+            />
+          )}
+          <Flex direction="column">
+            <label htmlFor="images">Model Image</label>
+            <Button
+              onClick={() => {
+                setModelModalOpen(true);
+              }}
+              mt={1}
+            >
+              {currentProduct.modelImage.length > 0
+                ? "Change Image"
+                : "Add Image"}
+            </Button>
+          </Flex>
+          {/* Modal */}
+          {modelModalOpen && (
+            <UploadImages
+              handleImageDrop={handleModelImageDrop}
+              modalOpen={modelModalOpen}
+              setModalOpen={setModelModalOpen}
+              product={currentProduct}
+              setProduct={setCurrentProduct}
+              type={"modelImage"}
             />
           )}
         </ModalBody>

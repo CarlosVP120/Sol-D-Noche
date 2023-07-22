@@ -4,7 +4,13 @@ import "./UploadImages.css";
 import { useState } from "react";
 import { useRef } from "react";
 
-const UploadImages = ({ modalOpen, setModalOpen, product, setProduct }) => {
+const UploadImages = ({
+  modalOpen,
+  setModalOpen,
+  product,
+  setProduct,
+  type,
+}) => {
   const [images, setImages] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef(null);
@@ -15,13 +21,27 @@ const UploadImages = ({ modalOpen, setModalOpen, product, setProduct }) => {
   };
 
   const onFileSelect = (e) => {
+    console.log(type);
+
     const files = e.target.files;
     if (files.length === 0) return;
+    // If the type is different than "images", the user can only select one image
+    if (type === "modelImage") {
+      if (files[0].type.split("/")[0] !== "image") return;
+      if (!images.some((e) => e.name === files[0].name)) {
+        // If the image is not already in the array
+        files[0]["url"] = URL.createObjectURL(files[0]); // Add a url field to the image
+        setImages((prev) => [...prev, files[0]]); // Add the image to the array
+      }
+      return;
+    }
+
     for (let i = 0; i < files.length; i++) {
       if (files[i].type.split("/")[0] !== "image") continue;
       if (!images.some((e) => e.name === files[i].name)) {
-        files[i]["url"] = URL.createObjectURL(files[i]);
-        setImages((prev) => [...prev, files[i]]);
+        // If the image is not already in the array
+        files[i]["url"] = URL.createObjectURL(files[i]); // Add a url field to the image
+        setImages((prev) => [...prev, files[i]]); // Add the image to the array
       }
     }
   };
@@ -45,6 +65,17 @@ const UploadImages = ({ modalOpen, setModalOpen, product, setProduct }) => {
     e.preventDefault();
     setIsDragging(false);
     const files = e.dataTransfer.files;
+
+    // If the type is different than "images", the user can only select one image
+    if (type === "modelImage") {
+      if (files[0].type.split("/")[0] !== "image") return;
+      if (!images.some((e) => e.name === files[0].name)) {
+        // If the image is not already in the array
+        files[0]["url"] = URL.createObjectURL(files[0]); // Add a url field to the image
+        setImages((prev) => [...prev, files[0]]); // Add the image to the array
+      }
+      return;
+    }
     for (let i = 0; i < files.length; i++) {
       if (files[i].type.split("/")[0] !== "image") continue;
       if (!images.some((e) => e.name === files[i].name)) {
@@ -60,7 +91,7 @@ const UploadImages = ({ modalOpen, setModalOpen, product, setProduct }) => {
 
     for (let i = 0; i < images.length; i++) {
       // Get Secure URL from Amazon S3
-      // Delete the URL field of each image
+      // Delete the URL field of each image because it is not needed anymore
       delete images[i].url;
 
       let { url } = await fetch(
@@ -82,20 +113,24 @@ const UploadImages = ({ modalOpen, setModalOpen, product, setProduct }) => {
 
     // Update the product with the image urls
     console.log(urls);
-    setProduct({ ...product, images: urls });
+    type === "images"
+      ? setProduct({ ...product, images: urls })
+      : setProduct({ ...product, modelImage: urls[0] });
+
+    toast({
+      title: "Images uploaded successfully!",
+      status: "success",
+      isClosable: true,
+      position: "top-center",
+    });
   };
 
   const uploadImages = () => {
     // handleImageDrop(images);
     console.log(images);
     uploadToAmazonS3(images);
-    toast({
-      title: "Imágenes Agregadas",
-      status: "success",
-      isClosable: true,
-      position: "top-center",
-    });
-    setModalOpen(!modalOpen);
+
+    setModalOpen(false);
   };
 
   const appear = keyframes`

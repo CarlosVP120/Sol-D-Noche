@@ -61,12 +61,12 @@ export default function WithAction({ showingComponent, setShowingComponent }) {
             <div className="hidden md:block">
               <Text>{currentUser ? currentUser?.email.split("@")[0] : ""}</Text>
             </div>
-            {/* <Button
+            <Button
               onClick={toggleColorMode}
               display={{ base: "none", sm: "flex" }}
             >
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-            </Button> */}
+            </Button>
 
             <Button
               variant={"solid"}

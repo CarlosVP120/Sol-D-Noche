@@ -11,12 +11,15 @@ import {
   keyframes,
   Heading,
   Select,
+  Text,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../Firebase/firebase-config";
 import ResizeTextarea from "react-textarea-autosize";
 import UploadImages from "./UploadImages";
+import ChakraTagInput from "./ChakraTagInput.tsx";
+import { useCallback } from "react";
 
 // * Initial State;
 const initialState = {
@@ -25,8 +28,9 @@ const initialState = {
   price: 0,
   availability: "",
   images: [],
+  modelImage: "",
   description: "",
-  stoneType: "",
+  stoneType: [],
   stripeID: "",
 };
 
@@ -35,6 +39,7 @@ const AddProduct = () => {
   const [product, setProduct] = useState(initialState);
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [modelModalOpen, setModelModalOpen] = useState(false);
 
   // * Add new Product into firebase Database;
   const AddProduct = async () => {
@@ -50,6 +55,8 @@ const AddProduct = () => {
         position: "top-center",
       });
       setProduct(initialState);
+      // Reload the page to update the products list
+      window.location.reload();
     } catch (error) {
       console.log("error: ", error);
     }
@@ -64,6 +71,15 @@ const AddProduct = () => {
     setProduct((prev) => ({ ...prev, images: images }));
     console.log(images);
   };
+
+  const handleModelImageDrop = (image) => {
+    setProduct((prev) => ({ ...prev, modelImage: image }));
+    console.log(image);
+  };
+
+  const handleTagsChange = useCallback((event, tags) => {
+    setProduct((prev) => ({ ...prev, [event.target.name]: tags }));
+  }, []);
 
   // const onDragEnd = (result) => {
   //   if (!result.destination) return;
@@ -164,39 +180,73 @@ const AddProduct = () => {
               </Box>
 
               <Box my="4">
-                <label htmlFor="stoneType">Stone Type:</label>
-                <Input
-                  id="stoneType"
-                  placeholder="Stone Type"
-                  value={product.stoneType}
+                <Flex gap={1} alignItems="center">
+                  <label htmlFor="stoneType">Stone Type:</label>
+                  <Text color="teal.400">
+                    (Press "enter" to add or "delete" to delete)
+                  </Text>
+                </Flex>
+
+                <ChakraTagInput
                   name="stoneType"
-                  onChange={handleChange}
                   mt={1}
+                  tags={product.stoneType}
+                  onTagsChange={handleTagsChange}
                 />
               </Box>
 
               <Box my="4">
-                <Flex direction="column">
-                  <label htmlFor="images">Images:</label>
-                  {/* Button to open Modal */}
-                  <Button
-                    onClick={() => {
-                      setModalOpen(true);
-                    }}
-                    mt={1}
-                  >
-                    {product.images.length > 0 ? "Change Images" : "Add Images"}
-                  </Button>
-                  {/* Modal */}
-                  {modalOpen && (
-                    <UploadImages
-                      handleImageDrop={handleImageDrop}
-                      modalOpen={modalOpen}
-                      setModalOpen={setModalOpen}
-                      product={product}
-                      setProduct={setProduct}
-                    />
-                  )}
+                <Flex w={"100%"} gap={2}>
+                  <Flex direction="column" w={"100%"}>
+                    <label htmlFor="images">Images:</label>
+                    {/* Button to open Modal */}
+                    <Button
+                      onClick={() => {
+                        setModalOpen(true);
+                      }}
+                      mt={1}
+                    >
+                      {product.images.length > 0
+                        ? "Change Images"
+                        : "Add Images"}
+                    </Button>
+                    {/* Modal */}
+                    {modalOpen && (
+                      <UploadImages
+                        handleImageDrop={handleImageDrop}
+                        modalOpen={modalOpen}
+                        setModalOpen={setModalOpen}
+                        product={product}
+                        setProduct={setProduct}
+                        type={"images"}
+                      />
+                    )}
+                  </Flex>
+                  <Flex direction="column" w={"100%"}>
+                    <label htmlFor="images">Model Image:</label>
+                    {/* Button to open Modal */}
+                    <Button
+                      onClick={() => {
+                        setModelModalOpen(true);
+                      }}
+                      mt={1}
+                    >
+                      {product.modelImage.length > 0
+                        ? "Change Image"
+                        : "Add Image"}
+                    </Button>
+                    {/* Modal */}
+                    {modelModalOpen && (
+                      <UploadImages
+                        handleImageDrop={handleModelImageDrop}
+                        modalOpen={modelModalOpen}
+                        setModalOpen={setModelModalOpen}
+                        product={product}
+                        setProduct={setProduct}
+                        type={"modelImage"}
+                      />
+                    )}
+                  </Flex>
                 </Flex>
               </Box>
             </Grid>
@@ -307,14 +357,18 @@ const AddProduct = () => {
               </Box>
 
               <Box my="1">
-                <label htmlFor="stoneType">Stone Type:</label>
-                <Input
-                  id="stoneType"
-                  placeholder="Stone Type"
-                  value={product.stoneType}
+                <Flex gap={1} alignItems="center">
+                  <label htmlFor="stoneType">Stone Type:</label>
+                  <Text color="teal.400">
+                    (Press "enter" to add or "delete" to delete)
+                  </Text>
+                </Flex>
+
+                <ChakraTagInput
                   name="stoneType"
-                  onChange={handleChange}
                   mt={1}
+                  tags={product.stoneType}
+                  onTagsChange={handleTagsChange}
                 />
               </Box>
 
@@ -338,6 +392,33 @@ const AddProduct = () => {
                       setModalOpen={setModalOpen}
                       product={product}
                       setProduct={setProduct}
+                    />
+                  )}
+                </Flex>
+              </Box>
+              <Box my="1">
+                <Flex direction="column" w={"100%"}>
+                  <label htmlFor="images">Model Image:</label>
+                  {/* Button to open Modal */}
+                  <Button
+                    onClick={() => {
+                      setModelModalOpen(true);
+                    }}
+                    mt={1}
+                  >
+                    {product.modelImage.length > 0
+                      ? "Change Image"
+                      : "Add Image"}
+                  </Button>
+                  {/* Modal */}
+                  {modelModalOpen && (
+                    <UploadImages
+                      handleImageDrop={handleModelImageDrop}
+                      modalOpen={modelModalOpen}
+                      setModalOpen={setModelModalOpen}
+                      product={product}
+                      setProduct={setProduct}
+                      type={"modelImage"}
                     />
                   )}
                 </Flex>
