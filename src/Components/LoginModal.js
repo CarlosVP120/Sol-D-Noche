@@ -15,12 +15,60 @@ export default function Example({ open, setOpen }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(null);
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      if (mode === "login") {
+        SignIn();
+      } else {
+        Signup();
+      }
+    }
+  };
+
+  // Password strength validation function
+  const isStrongPassword = (password) => {
+    const passwordRequirements = [
+      { label: "At least 8 characters", regex: /.{8,}/ },
+      { label: "At least 1 uppercase letter", regex: /.*[A-Z].*/ },
+      { label: "At least 1 lowercase letter", regex: /.*[a-z].*/ },
+      { label: "At least 1 number", regex: /.*\d.*/ },
+      { label: "At least 1 special character", regex: /.*[@$!%*?&].*/ },
+    ];
+
+    const missingRequirements = passwordRequirements.filter(
+      (requirement) => !requirement.regex.test(password)
+    );
+
+    if (missingRequirements.length === 0) {
+      return true;
+    } else {
+      return missingRequirements.map((requirement) => requirement.label);
+    }
+  };
 
   // * Signup function with email and password
   const Signup = async () => {
     try {
+      setError(null); // Clear any previous error
       if (password !== confirmPassword) {
-        alert("Password does not match");
+        setError("Password does not match");
+        return;
+      }
+
+      const missingRequirements = isStrongPassword(password);
+      if (missingRequirements !== true) {
+        setError(
+          <div>
+            <p className="text-red-500">Password must contain:</p>
+            <ul className="list-disc list-inside">
+              {missingRequirements.map((req, index) => (
+                <li key={index}>{req}</li>
+              ))}
+            </ul>
+          </div>
+        );
         return;
       }
 
@@ -30,21 +78,25 @@ export default function Example({ open, setOpen }) {
 
       setEmail("");
       setPassword("");
+      setConfirmPassword("");
       setOpen(false);
     } catch (error) {
+      setError("Error signing up. Please try again.");
       console.log("error: ", error);
     }
   };
 
   const SignIn = async () => {
     try {
-      console.log("email: ", email);
+      setError(null); // Clear any previous error
+
       await signInWithEmailAndPassword(auth, email, password);
 
       setEmail("");
       setPassword("");
       setOpen(false);
     } catch (error) {
+      setError("Invalid email or password. Please try again.");
       console.log("error: ", error);
     }
   };
@@ -116,6 +168,7 @@ export default function Example({ open, setOpen }) {
                           className="space-y-6 w-full"
                           action="#"
                           method="POST"
+                          onKeyPress={(e) => handleKeyPress(e)}
                         >
                           <div className="rounded-md shadow-sm -space-y-px pt-5 flex flex-col">
                             <div>
@@ -179,6 +232,15 @@ export default function Example({ open, setOpen }) {
                     </div>
                   </div>
                 </div>
+
+                <div className="px-4 flex justify-center items-center w-full">
+                  {error && (
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-md">
+                      {error}
+                    </div>
+                  )}
+                </div>
+
                 <div className="bg-gray-50 px-4 py-3 sm:flex flex justify-center items-center w-full flex-col">
                   {mode === "login" ? (
                     <button
