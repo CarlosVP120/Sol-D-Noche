@@ -71,7 +71,7 @@ const ProductListing = ({ type }) => {
         cartLength={cartLength}
       />
 
-      <div className="w-full sm:w-4/5 mx-auto mt-12">
+      <div className="w-full sm:w-4/5 mx-auto mt-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
           {filteredProducts.map((product) => (
             <ProductCard

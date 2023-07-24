@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const Navbar = () => {
   const [isMuted, setIsMuted] = useState(true);
@@ -37,7 +37,7 @@ const Navbar = () => {
       </div>
 
       {/* Links in the center */}
-      <ul className="hidden sm:flex gap-4 text-xl text-stone-400 font-bold">
+      <ul className="hidden sm:flex gap-4 text-xl text-stone-300 font-bold">
         <li>
           <button
             onClick={() => {
@@ -91,7 +91,7 @@ const Navbar = () => {
             toggleMute();
             handleAudio();
           }}
-          className="p-2 text-white hover:text-stone-100 transition-all duration-300 cursor-pointer"
+          className="p-2 text-stone-300 hover:text-stone-100 transition-all duration-300 cursor-pointer"
         >
           {isMuted ? (
             <svg
