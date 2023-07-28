@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import toast, { Toaster } from "react-hot-toast";
 import CheckoutLoading from "./CheckoutLoading";
@@ -19,12 +19,25 @@ export default function Example({
 
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem("cartItems");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
+
   const addToCart = (product) => {
     if (!cartItems.find((item) => item.id === product.id)) {
+      // Add the new product to the cart
       setCartItems((prevItems) => [...prevItems, product]);
       toast.success("Product added to cart");
       setOpen(false);
-      console.log(cartItems);
+
+      // Update cart items in localStorage
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify([...cartItems, product])
+      );
     } else {
       toast.error("Product already in cart");
     }

@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import toast from "react-hot-toast";
 import CheckoutLoading from "./CheckoutLoading";
@@ -17,6 +17,9 @@ export default function Cart({
   const removeFromCart = (product) => {
     const newCartItems = cartItems.filter((item) => item.id !== product.id);
     setCartItems(newCartItems);
+
+    // Update cart items in localStorage
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
 
   const totalPrice = cartItems.reduce(
