@@ -10,7 +10,7 @@ const Navbar = () => {
   const handleAudio = () => {
     const audioElement = document.getElementById("sound");
     if (audioElement) {
-      audioElement.volume = 0.5; // Set the volume of the audio element
+      audioElement.volume = 0.2; // Set the volume of the audio element
       if (isMuted) {
         audioElement.play().catch((error) => {
           console.error("Error while trying to play audio:", error);
