@@ -12,10 +12,18 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase-config.js";
 import nodemailer from "nodemailer";
+import cron from "node-cron";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+cron.schedule("*/10 * * * *", () => {
+  // Ping to "https://propty-file-server.onrender.com" to keep it awake
+  fetch("hhttps://soldnoche-server.onrender.com");
+  https.get("hhttps://soldnoche-server.onrender.com");
+  console.log("Ping to hhttps://soldnoche-server.onrender.com");
+});
 
 // create reusable transporter object using the default SMTP transport
 const transporter = nodemailer.createTransport({
