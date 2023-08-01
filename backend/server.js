@@ -18,9 +18,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-cron.schedule("*/10 * * * *", () => {
+cron.schedule("*6 * * * *", () => {
   // Ping to "https://propty-file-server.onrender.com" to keep it awake
-  fetch("hhttps://soldnoche-server.onrender.com");
   https.get("hhttps://soldnoche-server.onrender.com");
   console.log("Ping to hhttps://soldnoche-server.onrender.com");
 });
