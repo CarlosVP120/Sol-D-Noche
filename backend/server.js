@@ -84,7 +84,7 @@ app.post("/checkout", async (req, res) => {
     });
   });
 
-  // Ask the user for its shipping details in Mexico
+  // Ask the user for its shipping details in Mexico and add shipping rates
   const session = await stripeClient.checkout.sessions.create({
     payment_method_types: ["card"],
     line_items: lineItems,
@@ -94,6 +94,7 @@ app.post("/checkout", async (req, res) => {
     shipping_address_collection: {
       allowed_countries: ["MX"],
     },
+    shipping_rates: ["shr_1NapPhHWW2ECOmazWEFa4dzG"],
   });
 
   res.send(JSON.stringify({ url: session.url }));
