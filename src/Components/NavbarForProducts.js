@@ -102,7 +102,7 @@ const Navbar = ({ type, setOpen, currentUser, setOpenCart, cartLength }) => {
         </ul>
 
         <div className="flex items-center gap-2 sm:gap-4">
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <button
               onClick={() => {
                 toggleMute();
@@ -144,10 +144,11 @@ const Navbar = ({ type, setOpen, currentUser, setOpenCart, cartLength }) => {
             </button>
           </div>
 
-          {/* Audio element */}
+ 
           <audio id="sound" loop>
             <source src="/audios/sea.mp3" type="audio/mpeg" />
-          </audio>
+          </audio>{" "}
+          */}
 
           {/* Contact Button */}
           {currentUser ? (
@@ -199,7 +200,6 @@ const Navbar = ({ type, setOpen, currentUser, setOpenCart, cartLength }) => {
               ></span>
             </button>
           )}
-
           {/* Cart Button */}
           {/* If the admin is logged in, don't show the cart button */}
           {currentUser && currentUser.email === "admin@admin.com" ? null : (
