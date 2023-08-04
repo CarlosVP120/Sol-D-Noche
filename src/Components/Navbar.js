@@ -84,9 +84,9 @@ const Navbar = () => {
         </li>
       </ul>
 
-      {/* Mute sound button */}
       <div className="flex items-center gap-1 sm:gap-4">
-        <button
+        {/* Mute sound button */}
+        {/* <button
           onClick={() => {
             toggleMute();
             handleAudio();
@@ -126,10 +126,9 @@ const Navbar = () => {
           )}{" "}
         </button>
 
-        {/* Audio element */}
         <audio id="sound" loop>
           <source src="/audios/sea.mp3" type="audio/mpeg" />
-        </audio>
+        </audio> */}
 
         {/* Contact Button */}
         <a
