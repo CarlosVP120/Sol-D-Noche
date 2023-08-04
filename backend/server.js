@@ -99,7 +99,7 @@ app.post("/checkout", async (req, res) => {
         shipping_rate_data: {
           type: "fixed_amount",
           fixed_amount: {
-            amount: 1500,
+            amount: 9900,
             currency: "MXN",
           },
           display_name: "Dentro de la República Mexicana",
