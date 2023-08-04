@@ -20,8 +20,8 @@ app.use(express.json());
 
 cron.schedule("*/6 * * * *", () => {
   // Ping to "https://propty-file-server.onrender.com" to keep it awake
-  https.get("hhttps://soldnoche-server.onrender.com");
-  console.log("Ping to hhttps://soldnoche-server.onrender.com");
+  https.get("https://soldnoche-server.onrender.com");
+  console.log("Ping to https://soldnoche-server.onrender.com");
 });
 
 // create reusable transporter object using the default SMTP transport
