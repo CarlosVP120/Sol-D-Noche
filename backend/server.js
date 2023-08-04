@@ -96,15 +96,23 @@ app.post("/checkout", async (req, res) => {
     },
     shipping_options: [
       {
-        id: "envio-estandar",
-        label: "Envío Estándar",
-        description: "Envío estándar a cualquier parte de México",
-        amount: 1000,
-        currency: "MXN",
-        delivery_estimate: {
-          type: "estimated",
-          earliest: "2021-12-01T00:00:00Z",
-          latest: "2021-12-05T00:00:00Z",
+        shipping_rate_data: {
+          type: "fixed_amount",
+          fixed_amount: {
+            amount: 1500,
+            currency: "MXN",
+          },
+          display_name: "Dentro de la República Mexicana",
+          delivery_estimate: {
+            minimum: {
+              unit: "business_day",
+              value: 1,
+            },
+            maximum: {
+              unit: "business_day",
+              value: 3,
+            },
+          },
         },
       },
     ],
