@@ -94,7 +94,20 @@ app.post("/checkout", async (req, res) => {
     shipping_address_collection: {
       allowed_countries: ["MX"],
     },
-    shipping_rates: ["shr_1NapPhHWW2ECOmazWEFa4dzG"],
+    shipping_options: [
+      {
+        id: "envio-estandar",
+        label: "Envío Estándar",
+        description: "Envío estándar a cualquier parte de México",
+        amount: 1000,
+        currency: "MXN",
+        delivery_estimate: {
+          type: "estimated",
+          earliest: "2021-12-01T00:00:00Z",
+          latest: "2021-12-05T00:00:00Z",
+        },
+      },
+    ],
   });
 
   res.send(JSON.stringify({ url: session.url }));
