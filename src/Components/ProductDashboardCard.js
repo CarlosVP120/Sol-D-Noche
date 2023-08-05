@@ -149,8 +149,8 @@ const PropertyCard = ({ product }) => {
                 </Heading>
               </Flex>
               <Text h={"16"}>
-                {product.description.length > 50
-                  ? product.description.slice(0, 50) + "..."
+                {product.description.length > 150
+                  ? product.description.slice(0, 150) + "..."
                   : product.description}
               </Text>
               <Flex justify={"space-between"}>
