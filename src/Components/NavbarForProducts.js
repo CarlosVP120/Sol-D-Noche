@@ -81,12 +81,12 @@ const Navbar = ({ type, setOpen, currentUser, setOpenCart, cartLength }) => {
           </li>
           <li>
             <a
-              href="/products/necklaces"
+              href="/products/jewelry"
               className={`p-2 hover:text-secondary transition-all duration-300 cursor-pointer
             ${type === "Necklaces" ? "text-secondary" : ""}
             `}
             >
-              Necklaces
+              Jewelry
             </a>
           </li>
           <li>
@@ -253,12 +253,12 @@ const Navbar = ({ type, setOpen, currentUser, setOpenCart, cartLength }) => {
         </li>
         <li>
           <a
-            href="/products/necklaces"
+            href="/products/jewelry"
             className={`px-2 hover:text-secondary transition-all duration-300 cursor-pointer
             ${type === "Necklaces" ? "text-secondary" : ""}
             `}
           >
-            Necklaces
+            Jewelry
           </a>
         </li>
         <li>

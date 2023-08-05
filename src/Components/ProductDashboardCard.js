@@ -340,7 +340,7 @@ const ModalEdit = ({ product, setAccess, UpdateProduct }) => {
             mb={2}
           >
             <option value="Beaded Bags">Beaded Bags</option>
-            <option value="Necklaces">Necklaces</option>
+            <option value="Necklaces">Jewelry</option>
           </Select>
 
           <Flex gap={1} alignItems="center">

@@ -50,7 +50,7 @@ const Products = () => {
 
         {/* Black Overlay and Text */}
         <a
-          href="/products/necklaces"
+          href="/products/jewelry"
           className={`opacity-100 sm:opacity-0 absolute h-1/2 sm:w-1/2 sm:h-full flex flex-col justify-center items-center text-white bg-black bg-opacity-50  hover:opacity-100 transition-all duration-300 ${
             necklaceSelected ? "opacity-100 !important" : ""
           }`}
@@ -59,8 +59,8 @@ const Products = () => {
             Jewelry
           </h1>
           <p className="text-base sm:text-lg lg:text-xl text-white w-4/5 sm:w-3/5 md:w-1/2 text-center">
-            Find the perfect necklace for you. We have a wide variety of beach
-            necklaces, casual necklaces, night necklaces, and more.
+            Find the perfect accessory for you. We have a wide variety of
+            necklaces, bracelets, and more.
           </p>
         </a>
       </div>

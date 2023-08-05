@@ -145,7 +145,7 @@ const AddProduct = () => {
                   mt={1}
                 >
                   <option value="Beaded Bags">Beaded Bags</option>
-                  <option value="Necklaces">Necklaces</option>
+                  <option value="Necklaces">Jewelry</option>
                 </Select>
               </Box>
               <Box my="4">
@@ -267,10 +267,12 @@ const AddProduct = () => {
               <label htmlFor="stripeID">
                 Stripe ID:{" "}
                 <a
-                  href="https://dashboard.stripe.com/test/products/create"
+                  href="https://dashboard.stripe.com/products/create"
                   className="text-blue-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  (Get from: https://dashboard.stripe.com/test/products/create)
+                  (Get from: https://dashboard.stripe.com/products/create)
                 </a>
               </label>
               <Input
@@ -322,7 +324,7 @@ const AddProduct = () => {
                   mt={1}
                 >
                   <option value="Beaded Bags">Beaded Bags</option>
-                  <option value="Necklaces">Necklaces</option>
+                  <option value="Necklaces">Jewelry</option>
                 </Select>
               </Box>
               <Box my="1">
@@ -441,10 +443,12 @@ const AddProduct = () => {
               <label htmlFor="stripeID">
                 Stripe ID:{" "}
                 <a
-                  href="https://dashboard.stripe.com/test/products/create"
+                  href="https://dashboard.stripe.com/products/create"
                   className="text-blue-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  (Get from: https://dashboard.stripe.com/test/products/create)
+                  (Get from: https://dashboard.stripe.com/products/create)
                 </a>
               </label>
               <Input

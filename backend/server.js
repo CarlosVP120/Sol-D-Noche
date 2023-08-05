@@ -175,16 +175,16 @@ app.post("/webhook", async (req, res) => {
             <p><b>El nombre del comprador es:</b> ${
               session.customer_details.name
             }</p>
-            <p><b>El teléfono del comprador es:</b> ${
-              session.customer_details.phone
-            }</p>
-            <p><b>La dirección del comprador es:</b> ${
+            <p><b>La dirección de envío es:</b> ${
               session.customer_details.address.line1
             }, ${session.customer_details.address.city}, ${
               session.customer_details.address.state
             }, ${session.customer_details.address.country}</p>
-            <p><b>El código postal del comprador es:</b> ${
+            <p><b>El código postal es:</b> ${
               session.customer_details.address.postal_code
+            }</p>
+            <p><b>El teléfono del comprador es:</b> ${
+              session.customer_details.phone
             }</p>
             
             <hr style="border: 1px solid #000000; width: 100%; margin: 20px 0px;"/>

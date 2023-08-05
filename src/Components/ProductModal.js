@@ -212,9 +212,9 @@ export default function Example({
                       {/* Divider */}
 
                       <p className="text-gray-600 text-left text-base sm:text-xl">
-                        {product.description.length > 100 ? (
+                        {product.description.length > 250 ? (
                           <span>
-                            {product.description.substring(0, 100)}...
+                            {product.description.substring(0, 250)}...
                           </span>
                         ) : (
                           <span>{product.description}</span>
