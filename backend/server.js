@@ -18,10 +18,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-cron.schedule("*/6 * * * *", () => {
-  // Ping to "https://propty-file-server.onrender.com" to keep it awake
+cron.schedule("*/5 * * * *", () => {
+  console.log("running a task every five minutes");
   https.get("https://soldnoche-server.onrender.com");
-  console.log("Ping to https://soldnoche-server.onrender.com");
+  console.log("Ping to Myself");
 });
 
 // create reusable transporter object using the default SMTP transport
