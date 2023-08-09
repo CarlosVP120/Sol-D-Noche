@@ -20,6 +20,8 @@
     "firebase": "^9.23.0",
     "node-cron": "^3.0.2",
     "nodemailer": "^6.9.3",
+    "sitemap": "^7.1.1",
+    "stream": "^0.0.2",
     "stripe": "^12.11.0"
   }
 }

@@ -14,6 +14,8 @@ import { db } from "./firebase-config.js";
 import nodemailer from "nodemailer";
 import https from "https";
 import cron from "node-cron";
+import { SitemapStream, streamToPromise } from "sitemap";
+import { Readable } from "stream";
 
 const app = express();
 app.use(cors());
@@ -73,6 +75,27 @@ app.get("/s3Url", async (req, res) => {
   console.log("generating upload URL");
   const url = await generateUploadURL();
   res.send({ url });
+});
+
+app.get("/sitemap", async (req, res) => {
+  const links = [
+    { url: "/", changefreq: "daily", priority: 0.3 },
+    { url: "/products", changefreq: "daily", priority: 0.3 },
+    { url: "/products/all", changefreq: "daily", priority: 0.3 },
+    { url: "/beaded-bags", changefreq: "daily", priority: 0.3 },
+    { url: "/jewerly", changefreq: "daily", priority: 0.3 },
+  ];
+
+  const stream = new SitemapStream({ hostname: `https://soldnoche.com` });
+
+  // Set the content type
+  res.header("Content-Type", "application/xml");
+
+  const xmlString = await streamToPromise(
+    Readable.from(links).pipe(stream)
+  ).then((data) => data.toString());
+
+  res.send(xmlString);
 });
 
 app.post("/checkout", async (req, res) => {
