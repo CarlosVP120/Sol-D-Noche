@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "./Pages/DashboardPage";
 import Success from "./Pages/Success";
 import { ChakraProvider } from "@chakra-ui/react";
+import Sitemap from "./Pages/Sitemap";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/success",
     element: <Success />,
+  },
+  {
+    path: "/sitemap",
+    element: <Sitemap />,
   },
 ]);
 
